@@ -1,0 +1,7 @@
+[user]
+	name = Buster Styren
+	email = styren@kth.se
+[core]
+	editor = vim
+[color]
+	ui = true
