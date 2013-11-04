@@ -98,7 +98,7 @@ set backupdir=/tmp
 
 " hilight column 80
 set colorcolumn=80
-hi ColorColumn ctermbg=255 guibg=255
+hi ColorColumn ctermfg=white ctermbg=white
 
 " white background
 hi Normal ctermbg=White guibg=White
