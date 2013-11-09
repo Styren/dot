@@ -7,3 +7,21 @@
 	ui = true
 [credential]
 	helper = cache
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[color "branch"]
+	new = white green
+	old = white red
+[color "diff"]
+	new = white green
+	old = white red
+[color "status"]
+	new = white green
+	old = white red
+[push]
+	default = current
+[diff]
+	algorithm = patience
