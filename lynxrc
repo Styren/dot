@@ -1,0 +1,334 @@
+# Standardanvändarinställningsfil för Lynx
+# 
+# Filen innehåller inställningar som lagrats från Lynx inställningsskärm
+# (vanligtvis med knappen "o"). För att spara inställningar därifrån måste
+# du markera kryssrutan:
+#	Spara inställningar till disk
+#
+# Du måste sedan spara inställningarna med hjälp av länken på raden
+# ovanför kryssrutan:
+#	Bekräfta ändringar
+#
+# Du kan även använda kommandoradsflaggan "-forms_options", vilken visar
+# den förenklade inställningsmenyn. Därifrån sparar du inställningarna med
+# knappen ">".
+# 
+# Vanligtvis behöver du inte redigera denna fil manuellt, eftersom
+# inställningarna kan nås från alternativmenyn, och nästa gång alternativen
+# lagras från alternativmenyn kommer denna fil helt att skrivas över.
+# Du har varnats...
+# 
+# Om du letar efter den generella konfigurationsfilen heter den normalt
+# "lynx.cfg". Den har ett annat innehåll och ett annat format.
+# Det är inte den här filen.
+
+# accept_all_cookies låter användaren tala om för Lynx att automatiskt
+# acceptera alla kakor. Förvalet är "FALSE", och visar en fråga för
+# varje kaka. Sätt accept_all_cookies till "TRUE" för att acceptera
+# alla kakor.
+accept_all_cookies=off
+
+# anonftp_password låter användaren ange den personliga e-postadress
+# Lynx skall använda som lösenord för anonym ftp. Om inget värde anges
+# kommer Lynx använda den personliga e-postadressen. Sätt anonftp_password
+# till ett annat värde om du vill välja.
+anonftp_password=
+
+# bookmark_file anger namn och plats för standardbokmärkesfilen, i vilken
+# användaren kan klistra in länkar för att lätt komma åt dem senare.
+bookmark_file=lynx_bookmarks.html
+
+# Om case_sensitive_searching är "on" när användaren startar en sökning
+# med "s" eller "/" kommer sökningen som genomförs att göra skillnad på
+# gemener och versaler. Förvalet är normalt sett av ("off").
+case_sensitive_searching=off
+
+# Inställningen för character_set anger hur åttabitarstecken representeras
+# på din terminal. Om åttabitarstecken inte visas korrekt på din skärm kan
+# du försöka att ändra till en annan åttabitarsteckenuppsättning, eller
+# använda sjubitarstolkningarna.
+# Giltiga teckenuppsättningar är:
+#    Western (ISO-8859-1)
+#    7 bit approximations (US-ASCII)
+#    Western (ISO-8859-15)
+#    Western (cp850)
+#    Western (windows-1252)
+#    IBM PC US codepage (cp437)
+#    DEC Multinational
+#    Macintosh (8 bit)
+#    NeXT character set
+#    HP Roman8
+#    Chinese
+#    Japanese (EUC-JP)
+#    Japanese (Shift_JIS)
+#    Korean
+#    Taipei (Big5)
+#    Vietnamese (VISCII)
+#    Transparent
+#    Eastern European (ISO-8859-2)
+#    Eastern European (cp852)
+#    Eastern European (windows-1250)
+#    Latin 3 (ISO-8859-3)
+#    Latin 4 (ISO-8859-4)
+#    Baltic Rim (ISO-8859-13)
+#    Baltic Rim (cp775)
+#    Baltic Rim (windows-1257)
+#    Cyrillic (ISO-8859-5)
+#    Cyrillic (cp866)
+#    Cyrillic (windows-1251)
+#    Cyrillic (KOI8-R)
+#    Arabic (ISO-8859-6)
+#    Arabic (cp864)
+#    Arabic (windows-1256)
+#    Celtic (ISO-8859-14)
+#    Greek (ISO-8859-7)
+#    Greek (cp737)
+#    Greek2 (cp869)
+#    Greek (windows-1253)
+#    Hebrew (ISO-8859-8)
+#    Hebrew (cp862)
+#    Hebrew (windows-1255)
+#    Turkish (ISO-8859-9)
+#    Turkish (cp857)
+#    North European (ISO-8859-10)
+#    UNICODE (UTF-8)
+#    RFC 1345 w/o Intro
+#    RFC 1345 Mnemonic
+#    Ukrainian Cyrillic (cp866u)
+#    Ukrainian Cyrillic (KOI8-U)
+#    Cyrillic-Asian (PT154)
+character_set=Western (ISO-8859-1)
+
+# cookie_accept_domains och cookie_reject_domains är kommaavdelade
+# listor över domäner från vilka Lynx automatisk skall acceptera eller
+# avvisa kakor. Om en domän anges i båda alternativet kommer avvisning
+# att gå före. Flaggan accept_all_cookies går före alla inställningar
+# som görs här.
+cookie_accept_domains=
+
+# cookie_file specifies the file from which to read persistent cookies.
+# The default is ~/.lynx_cookies.
+cookie_file=
+
+# cookie_loose_invalid_domains, cookie_strict_invalid_domains och
+# cookie_query_invalid_domains är kommaavdelade listor över domäner som
+# skall underkastas olika nivåer av giltighetskontroll. Om en domän sätts
+# till strikt kontroll kommer strikt tolkning av RFC2109 att gälla.
+# En domän med lös kontroll gör det möjligt att sätta kakor med felaktiga
+# sökväg- eller domänattribut. Alla domäner får som förval frågor till
+# användaren för felaktiga sökvägar eller domäner.
+cookie_loose_invalid_domains=
+
+cookie_query_invalid_domains=
+
+cookie_reject_domains=
+
+cookie_strict_invalid_domains=
+
+# dir_list_order anger kataloglistesortering i DIRED_SUPPORT (om det är
+# implementerat). Förvalet är "ORDER_BY_NAME"
+dir_list_order=ORDER_BY_NAME
+
+# dir_list_styles anger kataloglistestil i DIRED_SUPPORT (om det är
+# implementerat). Förvalet är "MIXED_STYLE", vilket sorterar filer
+# och kataloger tillsammanns. "FILES_FIRST" listar filer först, och
+# "DIRECTORIES_FIRST" listar kataloger först.
+dir_list_style=MIXED_STYLE
+
+# Om emacs_keys sätts till "on" kommer EMACS-förflyttningstangeter att
+# aktiveras:
+#   ^N = ned      ^P = upp
+#   ^B = vänster  ^F = höger
+emacs_keys=off
+
+# file_editor anger vilket redigeringsprogram som skall aktiveras när lokala
+# filer redigeras, eller e-post sänds. Om inget program anges deaktiveras
+# filredigering, såvida det inte aktiveras från kommandoraden, och den inbyggda
+# radredigeraren används för e-post.
+file_editor=
+
+# file_sorting_method anger hur fillistor, såsom ftp-kataloger, skall
+# sorteras. Alternativen är:
+#    BY_FILENAME -- sorterar efter filnamn
+#    BY_TYPE     -- sorterar efter filtyp
+#    BY_SIZE     -- sorterar efter filstorlek
+#    BY_DATE     -- sorterar efter fildatum
+file_sorting_method=BY_FILENAME
+
+# Om keypad_mode sätts till "NUMBERS_AS_ARROWS" fungerar siffrorna på
+# ditt numeriska tangentbord som piltangeter när NumLock är aktivt:
+#             8 = Upppil
+#   4 = Vänsterpil   6 = Högerpil
+#             2 = Nedpil
+# och motsvarande siffertangenter på tangentbordet fungerar som
+# piltangetner, oavsett om NumLock är aktivt eller inte.
+# Om keypad_mode sätts till "LINKS_ARE_NUMBERED" kommer siffror
+# att visas vid varje länk, och siffror används för att välja länk.
+# Om keypad_mode sätts till "LINKS_AND_FORM_FIELDS_ARE_NUMBERED" kommer
+# siffror att visas vid varje länk och synligt formulärindatafält.
+# Siffror används för att välja länkar, eller för att flytta "aktuell
+# länk" till ett formulärindatafält eller -knapp. Dessutom kommer
+# alternativ i popupmenyer att numreras så att användaren kan skriva in
+# ett alternativnummer för att välja ett alternativ i popupmenyn, även om
+# alternativet inte är synligt på skärmen. Referenslistor och utdata från
+# listkommandot kommer även de att numrera formulärindatafält.
+# OBS: Vissa dokument med fixerat format kan se trasiga ut när
+# "LINKS_ARE_NUMBERED" eller "LINKS_AND_FORM_FILES_ARE_NUMBERED" är
+# aktiva.
+keypad_mode=LINKS_ARE_NOT_NUMBERED
+
+# lineedit_mode ange tangentbordsfunktioner som används för att skriva
+# in strängar i frågor och formulär. Om lineedit_mode sätts till
+# "Default Binding" kommer följande kontrolltecken användas för att
+# flytta och ta bort:
+# 
+#               Bakåt Framåt      Enter = Bekräfta indata
+#  Flytta tecken: <-    ->        ^G    = Avbryt inmatning
+#     Flytta ord: ^P    ^N        ^U    = Radera rad
+#  Radera tecken: ^H    ^R        ^A    = Radbörjan
+#     Radera ord: ^B    ^F        ^E    = Radslut
+# 
+#    Default Binding
+#    Alternate Bindings
+#    Bash-like Bindings
+lineedit_mode=Default Binding
+
+# Följande gör det möjligt för dig att definiera underbokmärkesfiler och
+# tillhörande beskrivningar. Formatet är:
+# multi_bookmark<stor bokstav>=<filnamn>,<beskrivning>
+# Upp till 26 bokmärkesfiler (de stora bokstäverna A-Z) tillåts.
+# Vi börjar med "multi_bookmarkB" eftersom "A" är förvalet (se ovan).
+multi_bookmarkB=
+multi_bookmarkC=
+multi_bookmarkD=
+multi_bookmarkE=
+multi_bookmarkF=
+multi_bookmarkG=
+multi_bookmarkH=
+multi_bookmarkI=
+multi_bookmarkJ=
+multi_bookmarkK=
+multi_bookmarkL=
+multi_bookmarkM=
+multi_bookmarkN=
+multi_bookmarkO=
+multi_bookmarkP=
+multi_bookmarkQ=
+multi_bookmarkR=
+multi_bookmarkS=
+multi_bookmarkT=
+multi_bookmarkU=
+multi_bookmarkV=
+multi_bookmarkW=
+multi_bookmarkX=
+multi_bookmarkY=
+multi_bookmarkZ=
+
+# personal_mail_address anger din personliga e-postaderss. Adressen
+# sänds under HTTP-filöverföringar för auktoriserings- och
+# loggningsändamål, samt för att sända kommentarer per e-post
+# Om du inte vill att denna information skall sändas, sätt NO_FROM_HEADER
+# till TRUE i lynx.cfg, eller använd kommandoradsflaggan -nofrom. Du kan
+# även lämna detta fält blankt, men då inkluderas det inte i kommentarer
+# du sänder.
+personal_mail_address=
+
+# preferred_charset anger de teckenuppsättningar Lynx kommer att ange att
+# du önskar ta emot i frågor till http-serverar i MIME-notation (t.ex
+# ISO-8859-2, ISO-8859-5). Detta sänds i Accept-Charset-huvudet. Värdet
+# bör inte innehålla ISO-8859-1 eller US-ASCII eftersom de värdena alltid
+# antas som förval. Kan vara en kommaseparerad lista.
+# Om en fil i den teckenuppsättningen finns att tillgå kommer servern
+# Om inget Accept-Charset sänds är förvalet att alla teckenuppsättningar
+# är acceptabla. Om en Accept-Charset är tillgänglig, och om servern inte
+# kan sända ett svar som är acceptabelt enligt Accept-Charset-huvudet BÖR
+# servern sända ett felmeddelande, även om det är tillåtet att sända även
+# ett icke-acceptabelt svar.
+preferred_charset=
+
+# preferred_language anger de språk som Lynx kommer att ange att du önskar
+# ta emot i frågor till webbservrar i MIME-notation (t.ex en,fr, kan vara
+# en kommaseparerad lista i minskande prioriteringsordning).
+# Om en fil i det språket finns att tillgå kommer servern sända den.
+# Annars kommer servern sända filen i sitt standardspråk.
+preferred_language=en
+
+# select_popups anger huruvida OPTION i ett SELECT-block som saknar
+# MULTIPLE-attribut skall visas som en vertikal lista med radioknappar
+# eller via en popupmuni. Observera att om MULTIPLE-attributet finns i
+# SELECT-märket kommer Lynx alltid skapa en vertikal lista med kryssrutor
+# för varje OPTION. Värdet "on" skapar som förval popupmenyer, medan
+# värdet "off" väljer radioknappar. Förvalet kan gås förbi via
+# kommandoradsflaggan -popup.
+select_popups=on
+
+# show_color anger hur färger ställs in vid start. Värdet "never" tvingar
+# färg att stängas av (terminalen behandlas som vore den monokrom) vid
+# start, även om terminalen verkar vara kapabel till färg. Värdet "always"
+# tvingar färg att slås på även om terminalen verkar vara monokrom, om det
+# stöds av det bibliotek som användes för att bygga lynx. Värdet "default"
+# gör att en monokrom terminal antas såvida inte färgstöd anges vid start
+# baserat på terminaltyp, eller via kommandoradsflaggan -color, eller om
+# miljövariabeln COLORTERM är satt. Detta beteende används alltid för anonyma
+# konton, eller om "option_save"-begränsningen är satt.
+# Det sparade värdet kan förbigås med kommandoradsflaggorna -color och
+# -nocolor.
+# Läget som sätts vid start kan ändras via inställningen "visa färg" i
+# alternativmenyn. Om alternativen sparas kommer inställningarna "on" och
+# "off" att tolkas som "default".
+show_color=default
+
+# show_cursor anger om markören skall "gömmas" till höger (och nederst,
+# om möjligt) på skärmen, eller om den skall ställas till vänster om
+# aktuell länk i dokument, eller aktuellt alternativ i popupfönster.
+# Att ställa markören till vänster om den aktuella länken eller alternativet
+# förenklar för tal- och braillegränssnitt, och om terminalen inte gör
+# skillnad på den aktuella länken med ljus- eller färgmarkering. Värdet
+# "on" placerar markören till vänster som förval, medan "off" "gömmer"
+# markören. Förvalet kan gås förbi via kommandoradsflaggan -show_cursor.
+show_cursor=off
+
+# show_dotfiles anger att kataloglistan skall inkludera "dolda"
+# (punkt-)filer/kataloger. Om satt till "on" kommer detta endast
+# att läsas om det aktiverats via userdefs.h och/eller lynx.cfg, och
+# inte begränsat via en kommandoradsflagga. Om visning av dolda
+# filer är deaktiverat kommer skapandet av sådana filer via Lynx
+# också att deaktiveras.
+show_dotfiles=off
+
+# Om sub_bookmarks inte är avstängt ("off"), och multipla bokmärken
+# har angetts (se nedan) kommer alla bokmärkesfunktioner först att be
+# användaren ange en aktiv underbokmärkesfil. Om en standardbokmärkesfil
+# har definierats (se bookmark_file ovan), kommer den att användas som
+# förval. När detta alternativ är satt till "advanced", och användarläget
+# är avancerat, kommer kommandot visa bokmärke att visa en statusradsfråga
+# istället för den meny som visas i användarlägets nybörjar- och
+# mellannivåer. Om detta alternativ sätts till "standard" visas menyn
+# oavsett användarläge.
+sub_bookmarks=OFF
+
+# user_mode anger användarens nivå av kunskap om Lynx. Förvalet
+# "NOVICE" (nybörjare) visar två extra rader med hjälp nederst på
+# skärmen för att hjälpa användaren lära de grundläggande kommandona
+# i Lynx. Sätt user_mode till "INTERMEDIATE" (mellannivå) för att
+# stänga av extrainformationen. Använd "ADVANCED" för att se adressen
+# för den markerade länken nederst på skärmen.
+user_mode=NOVICE
+
+# Om verbose_images är "on" skriver lynx namnet på bildens källfil
+# istället för [INLINE], [LINK] eller [IMAGE]
+# Se även VERBOSE_IMAGES i lynx.cfg
+verbose_images=on
+
+# Om vi_keys sätts till "on" kommer VI-förflyttningstangeter att aktiveras:
+#   j = ned      k = upp
+#   h = vänster  l = höger
+# Dessa tangenter gäller bara som gemener.
+# Versala "H", "J" och "K" aktiverar hjälp, hoppgenvägar respektiva
+# tangentbordsinställningarna.
+vi_keys=on
+
+# Inställningen visited_links anger hur Lynx organiserar informationen
+# på sidan Använda länkar.
+visited_links=LAST_REVERSED
+
