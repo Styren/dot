@@ -1,0 +1,10 @@
+! colorsheme
+*background: #000
+*foreground: #fff
+
+! font
+*faceName: DejaVuSansMono
+*faceSize: 10
+
+! charset
+*locale: UTF-8
