@@ -26,6 +26,6 @@ alias ddg='sr -browser=lynx duckduckgo'
 bind -f ~/.inputrc
 
 # Environmental variables predef
-PS1='\[\e[0;33m\]\W >\[\e[0m\] '
+PS1='\[\e[1;34m\]\W >\[\e[0m\] '
 EDITOR=/usr/bin/vim
 VISUAL=/usr/bin/vim
