@@ -16,8 +16,8 @@
 	new = white green
 	old = white red
 [color "diff"]
-	new = white green
-	old = white red
+	new = black green
+	old = black red
 [color "status"]
 	new = white green
 	old = white red
