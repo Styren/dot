@@ -107,4 +107,4 @@ hi Normal ctermbg=White guibg=White
 hi StatusLineNC guifg=white ctermfg=white guibg=black ctermbg=black gui=NONE
 
 " color scheme
-colorscheme pablo
+colorscheme desert
