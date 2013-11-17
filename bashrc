@@ -13,6 +13,7 @@
 alias bk='cd ..'
 alias ls='ls --color=auto'
 alias la='ls -AlhG --color=auto'
+alias pacman='pacman --color=auto'
 alias gs='git status -s'
 alias gd='git diff'
 alias ga='git add -i'
