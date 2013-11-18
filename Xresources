@@ -35,9 +35,9 @@
 ! white
 *color7:        #e5e5e5
 *color15:       #f3f3f3
-font
+! font
 *faceName:      FreeMono
-*faceSize:      14
+*faceSize:      12
 *font:          8x16
 
 ! charset
