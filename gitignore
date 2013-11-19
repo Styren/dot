@@ -1,0 +1,13 @@
+*.class
+*.o
+*.out
+*.swp
+.*~
+.DS_Store
+.dropbox
+.env
+.ruby-gemset
+.ruby-version
+dump.rdb
+node_modules
+tags

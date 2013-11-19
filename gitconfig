@@ -3,6 +3,7 @@
 	email = styren@kth.se
 [core]
 	editor = vim
+  excludesfile = ~/.gitignore
 [color]
 	ui = true
 [credential]
