@@ -36,7 +36,6 @@ alias gaf='git add'
 alias gap='git add -p'
 alias gc='git commit -e'
 alias gp='git push'
-alias ddg='sr -browser=lynx duckduckgo'
 
 # Misc aliases
 alias bk='cd ..'
@@ -44,6 +43,7 @@ alias ls='ls --color=always'
 alias la='ls -AlhG --color=always'
 alias pacman='pacman --color=always'
 alias some='less -R'
+alias ddg='sr -browser=lynx duckduckgo'
 
 # Full-screen editing of scripts with 'v' in normal mode
 autoload edit-command-line
