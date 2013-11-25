@@ -37,7 +37,7 @@ draw_shades no
 use_xft yes
 xftfont FreeSans:size=50
 gap_x 0
-gap_y -325
+gap_y -305
 minimum_size 699 20
 net_avg_samples 2
 no_buffers yes
@@ -56,6 +56,7 @@ show_graph_range no
 
 TEXT
 $hr
-$alignc${font FreeSans:bold:size=50}${time %H:%M} ${voffset -30}${font FreeSans:bold:size=25}${color white}${execi 3600 date +%A} ${color white}${voffset -14}${font FreeSans:size=10}${offset 120}batteri${offset 60}minne${offset 60}entropi
-${font FreeSans:size=20}${offset 181}${voffset 16}${execi 3600 date +%e}e ${execi 3600 date +%B}
-${offset 400}${voffset -50}${battery_bar 11,90} ${membar 11,90} ${entropy_bar 11,90}
+${font FreeSans:bold:size=50}${time %H:%M} ${voffset -30}${font FreeSans:bold:size=25}${color white}${execi 3600 date +%A}
+${font FreeSans:size=20}${offset 184}${voffset -6}${execi 3600 date +%e}e ${execi 3600 date +%B}
+${font FreeSans:size=10}${offset 449}${voffset -70}${color white}batteri${offset 58}minne${offset 55}entropi
+${offset 421}${voffset 0}${battery_bar 11,90} ${membar 11,90} ${entropy_bar 11,90}
