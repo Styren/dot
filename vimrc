@@ -85,6 +85,15 @@ cabbrev tnew tabedit
 " use comma as <leader> key instead of backslash
 let mapleader=","
 
+" map <leader>c to tcomment
+map <leader>c :TComment<cr>
+
+" toggle nerdtree
+nmap <leader>d :NERDTreeToggle<cr>
+
+" toggle nerdtree with the cursor positioned at the current file
+nmap <leader>D :NERDTreeFind<cr>
+
 " Interpret as Ruby
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru} set ft=ruby
 
