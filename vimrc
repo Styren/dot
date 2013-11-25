@@ -131,3 +131,20 @@ hi StatusLineNC guifg=white ctermfg=white guibg=black ctermbg=black gui=NONE
 
 " color scheme
 colorscheme desert
+
+" airline settings
+let g:airline_powerline_fonts = 1
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V-LINE',
+    \ '^V' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '^S' : 'S',
+    \ }
+let g:airline_section_z = '%l:%c %p%%'
