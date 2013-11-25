@@ -9,6 +9,16 @@ set t_Co=256
 
 " vundle
 set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'ervandew/supertab'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
