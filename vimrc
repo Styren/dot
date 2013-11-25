@@ -22,8 +22,12 @@ Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
+" remove auto-comment
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " encoding
 set encoding=utf-8
+set fileencoding=utf-8
 
 syntax on
 set number
