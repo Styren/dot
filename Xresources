@@ -36,8 +36,8 @@
 *color7:        #e5e5e5
 *color15:       #f3f3f3
 ! font
-*faceName:      FreeMono
-*faceSize:      12
+*faceName:      Inconsolata for Powerline
+*faceSize:      13
 *font:          8x16
 
 ! charset
