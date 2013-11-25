@@ -30,6 +30,7 @@ VISUAL=/usr/bin/vim
 # Git aliases
 alias gs='git status -s'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias ga='git add -i'
 alias gaf='git add'
 alias gap='git add -p'
