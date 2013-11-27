@@ -43,11 +43,8 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# don't let focus follow mouse movements
+focus_follows_mouse no
 
 # move focused window
 bindsym $mod+Shift+h move left
