@@ -16,6 +16,7 @@ alias la='ls -AlhG --color=auto'
 alias pacman='pacman --color=auto'
 alias gs='git status -s'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias ga='git add -i'
 alias gaf='git add'
 alias gap='git add -p'
@@ -26,6 +27,6 @@ alias ddg='sr -browser=lynx duckduckgo'
 bind -f ~/.inputrc
 
 # Environmental variables predef
-PS1='\[\e[1;34m\]\W >\[\e[0m\] '
+PS1='\e[40m \W \e[0;30m\e[0m '
 EDITOR=/usr/bin/vim
 VISUAL=/usr/bin/vim
