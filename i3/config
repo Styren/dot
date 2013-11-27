@@ -139,8 +139,22 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        colors {
+                background          #151515
+                focused_workspace   #4c7899 #1793d1 #ffffff
+                active_workspace    #333333 #5f676a #ffffff
+                inactive_workspace  #333333 #a5c0ce #888888
+                urgent_workspace    #2f343a #900000 #ffffff
+        }
 }
 
 # Remove borders
-new_window none
-new_float none
+new_window 1pixel
+new_float normal
+
+# Colors
+# Class                         border  backgr. text    indicator
+client.focused                  #4c7899 #1793d1 #ffffff #2e9ef4
+client.focused_inactive         #4c7899 #a5c0ce #ffffff #484e50
+client.unfocused                #4c7899 #a5c0ce #888888 #292d2e
+client.urgent                   #2f343a #900000 #ffffff #900000
