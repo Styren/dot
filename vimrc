@@ -97,6 +97,9 @@ nmap <leader>D :NERDTreeFind<cr>
 " map + to move to end of line
 map + $
 
+" map 0 to move to beginning of line (ignore tabs)
+map 0 ^
+
 " Interpret as Ruby
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru} set ft=ruby
 
