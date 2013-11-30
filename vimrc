@@ -94,6 +94,9 @@ nmap <leader>d :NERDTreeToggle<cr>
 " toggle nerdtree with the cursor positioned at the current file
 nmap <leader>D :NERDTreeFind<cr>
 
+" map + to move to end of line
+map + $
+
 " Interpret as Ruby
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru} set ft=ruby
 
