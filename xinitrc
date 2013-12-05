@@ -14,6 +14,6 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-# exec feh --bg-scale ~/.background.png
+xbindkeys
 
 exec i3 -V >> ~/.i3/i3log 2>&1
