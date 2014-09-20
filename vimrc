@@ -1,6 +1,9 @@
 " don't sacrifice anything for vi compatibility
 set nocompatible
 
+" allow us to change unsaved buffers
+set hidden
+
 " vundle begin
 filetype off
 
@@ -93,6 +96,12 @@ nmap <leader>d :NERDTreeToggle<cr>
 
 " toggle nerdtree with the cursor positioned at the current file
 nmap <leader>D :NERDTreeFind<cr>
+
+" Show buffers
+nnoremap <leader>å :buffers<cr>:buffer<Space>
+
+" Go to last buffer
+nmap å :b#<cr>
 
 " map + to move to end of line
 map + $
