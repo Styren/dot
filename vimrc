@@ -70,7 +70,7 @@ let g:ctrlp_prompt_mappings = {'PrtExit()':['§']}
 " closetag
 let g:closetag_html_style=1
 
-" map backspace to do nothing
+" map backspace to clear find-colouring etc.
 map <bs> :noh<cr>
 
 " map capital u to redo changes
