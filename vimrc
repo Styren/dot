@@ -22,6 +22,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+Bundle 'Raimondi/delimitMate'
 
 filetype plugin indent on
 
