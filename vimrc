@@ -125,6 +125,11 @@ let NERDTreeIgnore = ['\.o$', '\.class$']
 " Non blinking cursor.
 set guicursor+=a:blinkon0
 
+" Syntastic settings
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_auto_refresh_includes = 1
+" let g:syntastic_c_compiler_options = '-std=g99 -pedantic -Wall'
+
 " Disable netrw history
 let g:netrw_dirhistmax = 0
 let g:netrw_dirhist_cnt = 0
