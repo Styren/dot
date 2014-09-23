@@ -82,7 +82,7 @@ super + {_,alt + }{1-9,0}
 #
 
 super + Return
-    xterm
+    urxvt
 
 # super + space
 #     dmenu_run
