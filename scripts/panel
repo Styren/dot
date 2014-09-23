@@ -15,8 +15,9 @@ mkfifo "$PANEL_FIFO"
 bspc config top_padding $PANEL_HEIGHT
 
 bspc control --subscribe > "$PANEL_FIFO" &
-# xtitle -sf 'T%s' > "$PANEL_FIFO" &
-# clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &
+
+while true; do echo ABattery: $(acpi | grep -o "[0-9]*%") > "$PANEL_FIFO" && sleep 5; done &
+while true; do date "+D%d %B %H:%M" > "$PANEL_FIFO" && sleep 1; done &
 
 . /home/buster/scripts/panel_colors
 FONT_FAMILY='Inconsolata for Powerline'
