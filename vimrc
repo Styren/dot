@@ -22,6 +22,9 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Raimondi/delimitMate'
+Bundle 'bling/vim-bufferline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
@@ -40,9 +43,9 @@ set scrolloff=2
 
 " Whitespace stuff
 set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
@@ -66,14 +69,10 @@ let g:RUN_FOCUS_TEST = 1
 " Run last runned test constant.
 let g:RUN_LAST_TEST = 2
 
-" ctrlp
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_prompt_mappings = {'PrtExit()':['§']}
-
 " closetag
 let g:closetag_html_style=1
 
-" map backspace to clear find-colouring etc.
+" map backspace to clear find-colouring etc and not walk backwards
 map <bs> :noh<cr>
 
 " map capital u to redo changes
@@ -88,6 +87,9 @@ cabbrev tnew tabedit
 " use comma as <leader> key instead of backslash
 let mapleader=","
 
+" ctrlp
+nnoremap <leader>f :CtrlP<cr>
+
 " map <leader>c to tcomment
 map <leader>c :TComment<cr>
 
@@ -98,10 +100,31 @@ nmap <leader>d :NERDTreeToggle<cr>
 nmap <leader>D :NERDTreeFind<cr>
 
 " Show buffers
-nnoremap <leader>å :buffers<cr>:buffer<Space>
+nmap Å :buffers<cr>:buffer<Space>
 
 " Go to last buffer
-nmap å :b#<cr>
+nnoremap å :b#<cr>
+
+" Move between splits with ^ + standard vim bindings
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-l> <C-W>l
+
+" create horizontal and verical splits
+nmap <leader>s :split<cr>
+nmap <leader>v :vsplit<cr>
+
+" remove buffer
+nmap <leader>r :bdelete<cr>
+
+" x + 'å' jumps to buffer x (except if x is 0, jump to buffer 10)
+let c = 1
+while c <= 9
+  execute "nnoremap " . c . "å :" . c . "b\<cr>"
+  let c += 1
+endwhile
+nnoremap 0å :10b<cr>
 
 " map + to move to end of line
 map + $
@@ -121,7 +144,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*/doc/*,*/node_modules/*,*/tmp/*,*.*~,*.cla
 " NERDTree ignore
 let NERDTreeIgnore = ['\.o$', '\.class$']
 
-" Non blinking cursor.
+" Non blinking cursor
 set guicursor+=a:blinkon0
 
 " Syntastic settings
@@ -139,19 +162,11 @@ set backupdir=/tmp
 
 " hilight column 80
 set colorcolumn=80
-hi ColorColumn ctermfg=white ctermbg=white
-
-" white background
-hi Normal ctermbg=White guibg=White
-
-" white status bar
-hi StatusLineNC guifg=white ctermfg=white guibg=black ctermbg=black gui=NONE
 
 " color scheme
 colorscheme desert
 
 " airline settings
-"let g:airline_powerline_fonts = 1
 let g:airline_left_sep=" "
 let g:airline_right_sep=" "
 let g:airline_mode_map = {
@@ -168,3 +183,20 @@ let g:airline_mode_map = {
     \ '^S' : 'S',
     \ }
 let g:airline_section_z = '%l:%c %p%%'
+
+" enable bufferline in airline
+let g:airline#extensions#bufferline#enabled = 1
+let g:bufferline_echo = 0
+
+" changes colour of matching brackets
+highlight MatchParen        cterm=bold ctermbg=white ctermfg=black
+
+" colours signcolumn for gitgutter & syntastic
+highlight SignColumn        ctermbg=black
+
+" gitgutter options
+let g:gitgutter_map_keys = 0
+nmap gk <plug>GitGutterPrevHunk
+nmap gj <plug>GitGutterNextHunk
+nmap gs <plug>GitGutterStageHunk
+nmap gr <plug>GitGutterRevertHunk
