@@ -200,3 +200,6 @@ nmap gk <plug>GitGutterPrevHunk
 nmap gj <plug>GitGutterNextHunk
 nmap gs <plug>GitGutterStageHunk
 nmap gr <plug>GitGutterRevertHunk
+
+" remove default tcomment map
+let g:tcommentMaps = 0
