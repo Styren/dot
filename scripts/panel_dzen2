@@ -2,7 +2,7 @@
 #
 # Example panel for dzen2
 
-font_family='Inconsolata for Powerline'
+font_family='Inconsolata'
 font_size=14
 
 . panel_colors

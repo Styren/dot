@@ -36,7 +36,7 @@
 *color7:          #e5e5e5
 *color15:         #f3f3f3
 ! generic font
-xterm*faceName:   Inconsolata for Powerline
+xterm*faceName:   Inconsolata
 *faceSize:        13
 *font:            8x16
 
@@ -44,5 +44,5 @@ xterm*faceName:   Inconsolata for Powerline
 *locale:          UTF-8
 
 ! URxvt specific settings
-URxvt.font:       xft: Inconsolata for Powerline:style=Medium:size=13
+URxvt.font:       xft: Inconsolata:style=Medium:size=13
 URxvt.scrollBar:  false

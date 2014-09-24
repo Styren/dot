@@ -20,7 +20,7 @@ while true; do echo ABattery: $(acpi | grep -o "[0-9]*%") > "$PANEL_FIFO" && sle
 while true; do date "+D%d %B %H:%M" > "$PANEL_FIFO" && sleep 1; done &
 
 . /home/buster/scripts/panel_colors
-FONT_FAMILY='Inconsolata for Powerline'
+FONT_FAMILY='Inconsolata'
 FONT_SIZE=14
 cat "$PANEL_FIFO" | panel_dzen2 -f "$FONT_FAMILY" -s "$FONT_SIZE" | dzen2 -h $PANEL_HEIGHT -dock -ta l -title-name panel -fn "${FONT_FAMILY}:pixelsize=${FONT_SIZE}" -fg "$COLOR_FOREGROUND" -bg "$COLOR_BACKGROUND" &
 

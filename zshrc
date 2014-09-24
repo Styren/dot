@@ -34,8 +34,8 @@ setopt MENU_COMPLETE
 setopt GLOB_COMPLETE
 
 # Insert- and normal mode prompts
-vi_norm_mode=$'%{$fg[black]%}%{$bg[yellow]%} N %{$bg[black]%}%{$fg[yellow]%}%{$fg[white]%}%{$bg[black]%} %1~ %{$reset_color%}%{$fg[black]%}%{$reset_color%} '
-vi_ins_mode=$'%{$fg[black]%}%{$bg[cyan]%} I %{$bg[black]%}%{$fg[cyan]%}%{$fg[white]%}%{$bg[black]%} %1~ %{$reset_color%}%{$fg[black]%}%{$reset_color%} '
+vi_norm_mode=$'%{$fg[black]%}%{$bg[yellow]%} N %{$fg[white]%}%{$bg[black]%} %1~ %{$reset_color%}%{$fg[black]%} %{$reset_color%} '
+vi_ins_mode=$'%{$fg[black]%}%{$bg[cyan]%} I %{$fg[white]%}%{$bg[black]%} %1~ %{$reset_color%}%{$fg[black]%} %{$reset_color%} '
 
 function zle-keymap-select {
   PROMPT="${${KEYMAP/vicmd/${vi_norm_mode}}/(main|viins)/${vi_ins_mode}}"
