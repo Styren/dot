@@ -203,3 +203,5 @@ nmap gr <plug>GitGutterRevertHunk
 
 " remove default tcomment map
 let g:tcommentMaps = 0
+
+nmap gc :!git commit -e<cr>
