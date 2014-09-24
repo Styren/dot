@@ -192,7 +192,7 @@ let g:bufferline_echo = 0
 highlight MatchParen        cterm=bold ctermbg=white ctermfg=black
 
 " colours signcolumn for gitgutter & syntastic
-highlight SignColumn        ctermbg=black
+highlight SignColumn        ctermbg=none
 
 " gitgutter options
 let g:gitgutter_map_keys = 0
