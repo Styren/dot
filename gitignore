@@ -1,5 +1,6 @@
 *.class
 *.o
+*.log
 *.out
 *.swp
 .*~
@@ -10,4 +11,5 @@
 .ruby-version
 dump.rdb
 node_modules
+config.mk
 tags
