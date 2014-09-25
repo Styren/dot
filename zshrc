@@ -73,6 +73,9 @@ bindkey '^R' history-incremental-search-backward
 # reverse pattern search in vi-mode
 bindkey '^P' history-incremental-pattern-search-backward
 
+# write and execute script with v-key
+bindkey -M vicmd v edit-command-line
+
 # Full-screen editing of scripts with 'v' in normal mode
 autoload edit-command-line
 zle -N edit-command-line
