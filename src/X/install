@@ -1,0 +1,10 @@
+#!/bin/sh
+
+main() {
+    build_file "xinitrc"
+    build_file "Xresources"
+    build_file "Xdefaults"
+    build_file "xbindkeysrc"
+}
+
+main

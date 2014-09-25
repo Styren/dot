@@ -13,3 +13,6 @@ dump.rdb
 node_modules
 config.mk
 tags
+bin/
+[Bb]uild/
+

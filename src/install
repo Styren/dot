@@ -1,0 +1,72 @@
+#!/bin/sh
+
+is_set() {
+    if [[ ${1} -eq 1 ]]; then
+        return 0
+    fi
+    return 1
+}
+
+build() {
+    echo -e "Building: \e[0;31m$1\e[0m"
+    ( cd $1 && ./install )
+}
+
+build_file() {
+    local p="$2"
+    if [[ -z $p ]]; then
+        p=$BUILD_PATH
+    fi
+    mkdir -p "$p"
+    if $LINK; then
+        ln $1 $p
+        echo -e "    linked $1 in ${p}${1}"
+    else
+        echo -e "    created $1 in $p"
+        cp $1 $p
+    fi
+}
+
+export -f build_file
+
+main() {
+    source $CONFIG
+    if is_set $DOT_VIM; then
+        build "vim"
+    fi
+    if is_set $DOT_GIT; then
+        build "git"
+    fi
+    if is_set $DOT_TMUX; then
+        build "tmux"
+    fi
+    if is_set $DOT_COLORGCC; then
+        build "colorgcc"
+    fi
+    if is_set $DOT_LYNX; then
+        build "lynx"
+    fi
+    if is_set $DOT_MAIL; then
+        build "mail"
+    fi
+    if is_set $DOT_X; then
+        build "X"
+        if [ $DOT_WM == "bspwm" ]; then
+            build "bspwm"
+            if is_set $DOT_SXHKD; then
+                build "sxhkd"
+            fi
+        fi
+        if [ $DOT_WM == "i3" ]; then
+            build "i3"
+        fi
+    fi
+    if [ $DOT_SHELL == "bash" ]; then
+        build "bash"
+    fi
+    if [ $DOT_SHELL == "zsh" ]; then
+        build "zsh"
+    fi
+}
+
+main

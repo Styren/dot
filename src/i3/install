@@ -1,0 +1,7 @@
+#!/bin/sh
+
+main() {
+    build_file config ${BUILD_PATH}i3/
+}
+
+main

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+main() {
+    build_file sxhkdrc ${BUILD_PATH}config/sxhkd/
+}
+
+main

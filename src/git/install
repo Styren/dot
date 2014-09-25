@@ -1,0 +1,8 @@
+#!/bin/sh
+
+main() {
+    build_file gitconfig
+    build_file gitignore
+}
+
+main
