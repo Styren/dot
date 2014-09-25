@@ -118,13 +118,12 @@ nmap <leader>v :vsplit<cr>
 " remove buffer
 nmap <leader>r :bdelete<cr>
 
-" x + 'å' jumps to buffer x (except if x is 0, jump to buffer 10)
+" x + 'å' jumps to buffer x
 let c = 1
 while c <= 9
   execute "nnoremap " . c . "å :" . c . "b\<cr>"
   let c += 1
 endwhile
-nnoremap 0å :10b<cr>
 
 " map + to move to end of line
 map + $
