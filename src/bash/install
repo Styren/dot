@@ -1,9 +1,9 @@
 #!/bin/sh
 
-main() {
+build() {
     build_file "bashrc"
     chmod +x ${BUILD_PATH}bashrc
     build_file "inputrc"
 }
 
-main
+$@
