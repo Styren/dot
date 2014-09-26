@@ -1,5 +1,134 @@
 #!/bin/sh
 
+# TODO paths shouldn't have trailing /
+INSTALL_PATH="$(cd .. && pwd)/"
+export BUILD_PATH="${INSTALL_PATH}build/"
+export CONFIG="${INSTALL_PATH}config.mk"
+export RECIPE="${BUILD_PATH}recipe"
+
+SRC_PATH="$(pwd)/"
+
+export DEPTH=0
+
+# Opts
+OPTS=("$@")
+export PARAM_LINK=0
+export PARAM_SILENT=0
+export PARAM_BUILD_ALL=0
+
+error() {
+    echo "Error:" $1 1>&2
+    exit 1
+}
+
+set_bool_flag() {
+    while true; do
+        read -p "$1 (y/n) " yn
+        case $yn in
+            [Yy]* )
+                eval "$3+='$2 '"
+                return 0 ;;
+            [Nn]* )
+                eval "$3+='$2 '"
+                return 1 ;;
+            * ) ;;
+        esac
+    done
+}
+
+set_multi_flag() {
+    echo "$1 "
+    select yn in $2; do
+        for val in $2; do
+            if [ $yn == $val ]; then
+                if [ $val != "none" ]; then
+                    eval "$3+='$val '"
+                fi
+                if ! [[ -z $4 ]]; then
+                    eval "$4='$val '"
+                fi
+                return
+            fi
+        done
+    done
+}
+
+make_config() {
+    # TODO indent in scope
+    local projects=''
+    local tags=''
+    set_bool_flag "Configure for vim?" "vim" projects
+    set_bool_flag "Configure for git?" "git" projects
+    set_bool_flag "Configure for tmux?" "tmux" projects
+    set_bool_flag "Configure for colorgcc?" "colorgcc" projects
+    set_bool_flag "Configure for lynx?" "lynx" projects
+    set_bool_flag "Configure for mail?" "mail" projects
+    if set_bool_flag "Configure for X?" "X" projects; then
+        set_bool_flag "Configure for dwb?" "dwb" projects
+        set_bool_flag "Configure for vlc?" "vlc" projects
+        local wm=''
+        set_multi_flag "Configure for which wm?" "bspwm i3 none" projects wm
+        if [ $wm == "bspwm" ]; then
+            set_bool_flag "Configure for sxhkd?" "sxhkd" projects
+        fi
+    fi
+    set_bool_flag "Configure for laptop?" "laptop" tags
+    set_multi_flag "Configure for which shell?" "bash zsh none" projects
+    echo "PROJECTS=\"${projects}\"" >> $CONFIG
+    echo "TAGS=\"${tags}\"" >> $CONFIG
+}
+
+run_command() {
+    local cmd=$1
+    local params=$(echo $2 | grep -o .)
+    case $cmd in
+        build) 
+            if [[ -d $BUILD_PATH ]]; then
+                error "Target already exists"
+            fi
+            for i in $params; do
+                case $i in
+                    s)
+                        PARAM_SILENT=1
+                        ;;
+                    l)
+                        PARAM_LINK=1
+                        ;;
+                    a)
+                        PARAM_BUILD_ALL=1
+                        ;;
+                    *)
+                        error "Invalid parameter"
+                esac
+            done
+            build
+            ;;
+        patch)
+            if ! [[ -d $BUILD_PATH ]]; then
+                error "Build directory doesn't exist"
+            fi
+            if ! [[ -f $RECIPE ]]; then
+                error "No recipe file"
+            fi
+            patch
+            ;;
+        clean)
+            rm -r $BUILD_PATH
+            ;;
+        config)
+            if [[ -f $CONFIG ]]; then
+                rm $CONFIG
+            fi
+            touch "$CONFIG"
+            make_config
+            ;;
+        * )
+            error "Invalid command"
+            exit 1
+            ;;
+    esac
+}
+
 is_set() {
     if [[ ${1} -eq 1 ]]; then
         return 0
@@ -7,65 +136,95 @@ is_set() {
     return 1
 }
 
-build() {
-    echo -e "Building: \e[0;31m$1\e[0m"
-    ( cd $1 && ./install )
+get_depth() {
+    for ((i=0; i<$DEPTH; i++)) {
+        echo -ne " " 
+    }
+    return
 }
 
+export -f get_depth
+
+build_module() {
+    let DEPTH+=1
+    echo -e $(get_depth)"Building module: \e[0;31m$1\e[0m"
+    ( cd $1 && ./install build )
+    let DEPTH+=-1
+}
+
+build_submodule() {
+    let DEPTH+=1
+    echo -e "$(get_depth)Building submodule: \e[0;31m$1\e[0m"
+    ( cd $1 && ./install build )
+    let DEPTH+=-1
+}
+
+export -f build_submodule
+
+# Moves file to $BUILD_PATH and creates recipe entry
+# $1 = name of file to build
+# $2 = name of place to install to
+# $3 = name of file once installed
 build_file() {
-    local p="$2"
-    if [[ -z $p ]]; then
-        p=$BUILD_PATH
+    let DEPTH+=1
+    local path=$2
+    if [[ -z $path ]];then
+        path="${HOME}"
     fi
-    mkdir -p "$p"
+    local name=$3
+    if [[ -z $3 ]];then
+        name="$1"
+    fi
+    # if file with same name is present we handle the collision
+    local build_name=$1
+    local suffix=0
+    while [[ -f ${BUILD_PATH}/$build_name ]]; do
+        build_name=${1}.${suffix}
+        let suffix+=1
+    done
     if $LINK; then
-        ln $1 $p
-        echo -e "    linked $1 in ${p}${1}"
+        ln $1 ${BUILD_PATH}/$build_name
     else
-        echo -e "    created $1 in $p"
-        cp $1 $p
+        cp $1 ${BUILD_PATH}/$build_name
     fi
+    echo -e "$(get_depth)built $1"
+    echo "$1 $path $name" >> $RECIPE
+    let DEPTH+=-1
 }
 
 export -f build_file
 
-main() {
+build() {
+    mkdir ${BUILD_PATH}
+    touch ${RECIPE}
+    if ! [[ -f $CONFIG ]]; then
+        error "Config file doesn't exist."
+    fi
     source $CONFIG
-    if is_set $DOT_VIM; then
-        build "vim"
-    fi
-    if is_set $DOT_GIT; then
-        build "git"
-    fi
-    if is_set $DOT_TMUX; then
-        build "tmux"
-    fi
-    if is_set $DOT_COLORGCC; then
-        build "colorgcc"
-    fi
-    if is_set $DOT_LYNX; then
-        build "lynx"
-    fi
-    if is_set $DOT_MAIL; then
-        build "mail"
-    fi
-    if is_set $DOT_X; then
-        build "X"
-        if [ $DOT_WM == "bspwm" ]; then
-            build "bspwm"
-            if is_set $DOT_SXHKD; then
-                build "sxhkd"
-            fi
+    for elem in $PROJECTS; do
+        build_module $elem
+    done
+}
+
+patch() {
+    cat $RECIPE | \
+    while read LINE; do
+        local from=$(echo $LINE | awk 'print $1')
+        local to=$(echo $LINE | awk 'print $2')
+        local name=$(echo $LINE | awk 'print $3')
+        ( cd $BUILD_PATH && mkdir -p $to && cp $from $to )
+    done
+}
+
+main() {
+    if [[ -z ${OPTS[1]} ]]; then
+        if [[ -z ${OPTS[0]} ]]; then
+            echo No command specified
+            exit 1
         fi
-        if [ $DOT_WM == "i3" ]; then
-            build "i3"
-        fi
-    fi
-    if [ $DOT_SHELL == "bash" ]; then
-        build "bash"
-    fi
-    if [ $DOT_SHELL == "zsh" ]; then
-        build "zsh"
+        run_command ${OPTS[0]}
+    else
+        run_command ${OPTS[1]} ${OPTS[0]}
     fi
 }
 
