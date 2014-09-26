@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ -d $HOME/dotfiles ]]; then
+    if [[ -f $HOME/dotfiles/install ]]; then
+        (cd $HOME/dotfiles && ./install "$@")
+        exit 0
+    fi
+    echo Cannot find install in Dotfiles
+    exit 1
+fi
+echo Cannot find directory Dotfiles in \$HOME
+exit 1
+
