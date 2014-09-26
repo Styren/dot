@@ -1,8 +1,8 @@
 #!/bin/sh
 
-main() {
-    build_file bspwmrc ${BUILD_PATH}config/bspwm/
+build() {
+    build_file bspwmrc ${HOME}/.config/bspwm bspwmrc
     chmod +x ${BUILD_PATH}bspwmrc
 }
 
-main
+$@

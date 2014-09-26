@@ -1,7 +1,8 @@
 #!/bin/sh
 
-main() {
+build() {
     build_file vimrc
+    build_submodule ftplugin
 }
 
-main
+$@
