@@ -116,7 +116,7 @@ nmap <leader>s :split<cr>
 nmap <leader>v :vsplit<cr>
 
 " remove buffer
-nmap <leader>r :bdelete<cr>
+nmap <leader>r :bwipeout<cr>
 
 " x + 'å' jumps to buffer x
 let c = 1
