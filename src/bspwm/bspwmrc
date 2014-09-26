@@ -20,7 +20,7 @@ bspc config urgent_border_color "#960000"
 for side in right bottom left; do
   bspc config ${side}_padding $BORDER_SIZE
 done
-bspc config top_padding 17
+bspc config top_padding 18
 
 # TODO general path
 /home/buster/scripts/panel &
