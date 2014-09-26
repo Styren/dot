@@ -11,20 +11,25 @@ set noswapfile
 set t_Co=256
 
 " vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+" Let Vundle manage itself
+Plugin 'gmarik/vundle'
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Raimondi/delimitMate'
-Bundle 'bling/vim-bufferline'
-Bundle 'kien/ctrlp.vim'
-Bundle 'airblade/vim-gitgutter'
+" Plugins
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Raimondi/delimitMate'
+Plugin 'bling/vim-bufferline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+
+call vundle#end()
 
 filetype plugin indent on
 
