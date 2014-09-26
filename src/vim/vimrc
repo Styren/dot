@@ -4,8 +4,8 @@ set nocompatible
 " allow us to change unsaved buffers
 set hidden
 
-" vundle begin
-filetype off
+" no swapfiles
+set noswapfile
 
 " 256 colors
 set t_Co=256
