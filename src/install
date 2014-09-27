@@ -183,7 +183,7 @@ build_file() {
     fi
     local name=$3
     if [[ -z $3 ]];then
-        name="$1"
+        name=".$1"
     fi
     # if file with same name is present we handle the collision
     local build_name=$1
