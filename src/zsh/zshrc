@@ -23,10 +23,6 @@ setopt AUTO_PUSHD
 # don't print if we popd for example
 setopt PUSHD_SILENT
 
-# if directory is invalid and not proceeded by / or ~, look in ~
-# not working? TODO
-setopt CDABLE_VARS
-
 setopt PROMPT_SUBST
 setopt MENU_COMPLETE
 
