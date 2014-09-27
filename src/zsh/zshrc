@@ -62,7 +62,6 @@ alias ls='ls --color=always'
 alias la='ls -AlhG --color=always'
 alias pacman='pacman --color=always'
 alias some='less -R'
-alias ddg='sr -browser=lynx duckduckgo'
 
 # reverse search in vi-mode
 bindkey '^R' history-incremental-search-backward
