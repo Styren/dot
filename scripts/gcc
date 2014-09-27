@@ -1,0 +1,8 @@
+#!/usr/sh
+
+# Calls colorgcc if it exists
+if which colorgcc; then
+    colorgcc "$@"
+else
+    gcc "$@"
+fi
