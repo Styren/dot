@@ -150,6 +150,19 @@ build_submodule() {
 
 export -f build_submodule
 
+# Deletes all lines between <<<{$1} and >>>{$1} including the tags in file $2
+delete_chunk() {
+    if ! [ ${3} -eq 0 ]; then
+        sed -i "/<<<{${1}}/,/>>>{${1}}/d" "$2"
+    else
+        echo $?
+        sed -i "/<<<{${1}}/d" "$2"
+        sed -i "/>>>{${1}}/d" "$2"
+    fi
+}
+
+export -f delete_chunk
+
 tag_enabled() {
     source $CONFIG
     local i
