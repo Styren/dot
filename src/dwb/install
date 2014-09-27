@@ -1,0 +1,10 @@
+#!/bin/sh
+
+build() {
+    build_file keys ${HOME}/.config/dwb keys
+    build_file searchengines ${HOME}/.config/dwb searchengines
+    build_file settings ${HOME}/.config/dwb settings
+    build_submodule default
+}
+
+$@
