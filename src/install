@@ -173,7 +173,7 @@ project_enabled() {
 export -f project_enabled
 
 # Moves file to $BUILD_PATH and creates recipe entry
-# $1 = name of file to build
+# $1 = name of file to build. Will be overwritten with buildname
 # $2 = name of place to install to
 # $3 = name of file once installed
 build_file() {
@@ -200,6 +200,7 @@ build_file() {
     fi
     echo -e "$(get_depth)built $1"
     echo "$build_name $path $name" >> $RECIPE
+    eval "$1='$build_name'"
     let DEPTH+=-1
 }
 
