@@ -29,3 +29,5 @@
 	algorithm = patience
 [init]
     templatedir = ~/.git-templates
+[alias]
+    ctags = !.git/hooks/ctags
