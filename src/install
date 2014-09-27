@@ -154,6 +154,27 @@ build_submodule() {
 
 export -f build_submodule
 
+# search for element in array
+# $1 = element to search for
+# $2+ = elements in array
+contains_elem() {
+    local i
+    for i in "${@:2}"; do [[ "$i" == "$1" ]] && return 0; done
+    return 1
+}
+
+tag_enabled() {
+    return contains_elem $1 $TAGS
+}
+
+export -f tag_enabled
+
+project_enabled() {
+    return contains_elem $1 $PROJECT
+}
+
+export -f project_enabled
+
 # Moves file to $BUILD_PATH and creates recipe entry
 # $1 = name of file to build
 # $2 = name of place to install to
