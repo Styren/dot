@@ -1,0 +1,12 @@
+#!/bin/sh
+
+build() {
+    build_file css.vim $HOME/.vim/after/ftplugin css.vim
+    build_file c.vim $HOME/.vim/after/ftplugin c.vim
+    build_file go.vim $HOME/.vim/after/ftplugin go.vim
+    build_file html.vim $HOME/.vim/after/ftplugin html.vim
+    build_file java.vim $HOME/.vim/after/ftplugin java.vim
+    build_file javascript.vim $HOME/.vim/after/ftplugin javascript.vim
+}
+
+$@
