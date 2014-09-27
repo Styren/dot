@@ -27,3 +27,5 @@
 	default = current
 [diff]
 	algorithm = patience
+[init]
+    templatedir = ~/.git-templates
