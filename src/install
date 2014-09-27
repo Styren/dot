@@ -12,7 +12,6 @@ export DEPTH=0
 
 # Opts
 OPTS=("$@")
-export PARAM_LINK=0
 export PARAM_SILENT=0
 export PARAM_BUILD_ALL=0
 
@@ -90,9 +89,6 @@ run_command() {
                 case $i in
                     s)
                         PARAM_SILENT=1
-                        ;;
-                    l)
-                        PARAM_LINK=1
                         ;;
                     a)
                         PARAM_BUILD_ALL=1
@@ -193,11 +189,7 @@ build_file() {
         build_name=${1}.${suffix}
         let suffix+=1
     done
-    if $LINK; then
-        ln $1 ${BUILD_PATH}/$build_name
-    else
-        cp -i $1 ${BUILD_PATH}/$build_name
-    fi
+    cp -i $1 ${BUILD_PATH}/$build_name
     echo -e "$(get_depth)built $1"
     echo "$build_name $path $name" >> $RECIPE
     eval "$1='$build_name'"
