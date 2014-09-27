@@ -231,7 +231,7 @@ patch() {
         local from=$(echo $LINE | awk '{print $1}')
         local to=$(echo $LINE | awk '{print $2}')
         local name=$(echo $LINE | awk '{print $3}')
-        ( cd $BUILD_PATH && mkdir -p $to && cp $from $to/$name )
+        ( cd $BUILD_PATH && mkdir -p $to && cp $from "${to}/${name}" )
     done
 }
 
