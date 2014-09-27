@@ -129,13 +129,6 @@ run_command() {
     esac
 }
 
-is_set() {
-    if [[ ${1} -eq 1 ]]; then
-        return 0
-    fi
-    return 1
-}
-
 get_depth() {
     for ((i=0; i<$DEPTH; i++)) {
         echo -ne " " 
