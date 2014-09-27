@@ -195,7 +195,7 @@ build_file() {
     if $LINK; then
         ln $1 ${BUILD_PATH}/$build_name
     else
-        cp $1 ${BUILD_PATH}/$build_name
+        cp -i $1 ${BUILD_PATH}/$build_name
     fi
     echo -e "$(get_depth)built $1"
     echo "$1 $path $name" >> $RECIPE
