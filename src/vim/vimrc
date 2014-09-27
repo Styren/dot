@@ -27,7 +27,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-bufferline'
 Plugin 'kien/ctrlp.vim'
+<<<{git}
 Plugin 'airblade/vim-gitgutter'
+>>>{git}
 
 call vundle#end()
 
@@ -198,16 +200,19 @@ highlight MatchParen        cterm=bold ctermbg=white ctermfg=black
 " colours signcolumn for gitgutter & syntastic
 highlight SignColumn        ctermbg=none
 
+<<<{git}
 " gitgutter options
 let g:gitgutter_map_keys = 0
 nmap gk <plug>GitGutterPrevHunk
 nmap gj <plug>GitGutterNextHunk
 nmap gs <plug>GitGutterStageHunk
 nmap gr <plug>GitGutterRevertHunk
+>>>{git}
 
 " remove default tcomment map
 let g:tcommentMaps = 0
 
+<<<{git}
 function GitCommit()
     let f = "/tmp/tmpcommit"
     enew f
@@ -215,3 +220,4 @@ function GitCommit()
 endfunction
 
 nmap gc :call GitCommit()<cr>
+>>>{git}

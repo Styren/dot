@@ -1,7 +1,11 @@
 #!/bin/sh
 
 build() {
-    build_file vimrc
+    local v="vimrc"
+    build_file $v
+    # delete git specific changes if git is disabled
+    project_enabled "git"
+    delete_chunk "git" "${BUILD_PATH}/${v}" $?
     build_submodule ftplugin
 }
 
