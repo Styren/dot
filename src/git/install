@@ -3,6 +3,9 @@
 build() {
     build_file gitconfig
     build_file gitignore
+    if project_enabled "ctags"; then
+        build_submodule ctag-hooks
+    fi
 }
 
 $@

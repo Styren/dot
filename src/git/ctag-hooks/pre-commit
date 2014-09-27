@@ -1,0 +1,22 @@
+#!/bin/bash
+
+ls *.go &>/dev/null
+if test "$?" != 0; then
+  exit 0
+fi
+
+rval=0
+
+if which gofmt >/dev/null; then
+  files=$(gofmt -l .)
+  if test -n "$files"; then
+    rval=1
+    echo "$files"
+  fi
+fi
+
+if which golint >/dev/null; then
+  golint .
+fi
+
+exit "$rval"

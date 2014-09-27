@@ -1,0 +1,11 @@
+#!/bin/sh
+
+build() {
+    build_file ctags $HOME/.git/git-templates/hooks
+    build_file post-checkout $HOME/.git/git-templates/hooks
+    build_file post-commit $HOME/.git/git-templates/hooks
+    build_file post-merge $HOME/.git/git-templates/hooks
+    build_file pre-commit $HOME/.git/git-templates/hooks
+}
+
+$@
