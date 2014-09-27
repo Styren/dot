@@ -2,7 +2,6 @@
 
 build() {
     build_file bspwmrc ${HOME}/.config/bspwm bspwmrc
-    chmod +x ${BUILD_PATH}bspwmrc
 }
 
 $@
