@@ -1,7 +1,7 @@
 #!/usr/sh
 
 # Calls colorgcc if it exists
-if which colorgcc; then
+if which colorgcc &>/dev/null; then
     colorgcc "$@"
 else
     gcc "$@"
