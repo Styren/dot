@@ -26,7 +26,7 @@ set_bool_flag() {
         read -p "$1 (y/n) " yn
         case $yn in
             [Yy]* )
-                eval "$3+='$2 '"
+                eval "$3+=('$2')"
                 return 0 ;;
             [Nn]* )
                 return 1 ;;
@@ -41,7 +41,7 @@ set_multi_flag() {
         for val in $2; do
             if [ $yn == $val ]; then
                 if [ $val != "none" ]; then
-                    eval "$3+='$val '"
+                    eval "$3+=('$val')"
                 fi
                 if ! [[ -z $4 ]]; then
                     eval "$4='$val '"
@@ -54,8 +54,8 @@ set_multi_flag() {
 
 make_config() {
     # TODO indent in scope
-    local projects=''
-    local tags=''
+    local projects=()
+    local tags=()
     set_bool_flag "Configure for vim?" "vim" projects
     set_bool_flag "Configure for git?" "git" projects
     set_bool_flag "Configure for tmux?" "tmux" projects
@@ -73,8 +73,8 @@ make_config() {
     fi
     set_bool_flag "Configure for laptop?" "laptop" tags
     set_multi_flag "Configure for which shell?" "bash zsh none" projects
-    echo "PROJECTS=\"${projects}\"" >> $CONFIG
-    echo "TAGS=\"${tags}\"" >> $CONFIG
+    echo "PROJECTS=(${projects[@]})" >> $CONFIG
+    echo "TAGS=(${tags[@]})" >> $CONFIG
 }
 
 run_command() {
@@ -214,7 +214,8 @@ build() {
         error "Config file doesn't exist."
     fi
     source $CONFIG
-    for elem in $PROJECTS; do
+    local elem
+    for elem in "${PROJECTS[@]}"; do
         build_module $elem
     done
 }
