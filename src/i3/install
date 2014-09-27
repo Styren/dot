@@ -1,9 +1,8 @@
 #!/bin/sh
 
 build() {
-    build_file i3rc ${BUILD_PATH}config/i3/ "config"
-    build_file i3statusrc ${BUILD_PATH}config/i3status/ "config"
-    chmod +x ${BUILD_PATH}config/i3status/config
+    build_file i3rc ${BUILD_PATH}config/i3/ config
+    build_file i3statusrc ${BUILD_PATH}config/i3status/ config
 }
 
 $@
