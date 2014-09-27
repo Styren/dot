@@ -199,7 +199,7 @@ build_file() {
         cp -i $1 ${BUILD_PATH}/$build_name
     fi
     echo -e "$(get_depth)built $1"
-    echo "$1 $path $name" >> $RECIPE
+    echo "$build_name $path $name" >> $RECIPE
     let DEPTH+=-1
 }
 
