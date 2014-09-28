@@ -74,6 +74,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" highlight linenumber of current line
+set cursorline
+
 " Tab completion
 set wildmode=list:longest,list:full
 
@@ -215,12 +218,6 @@ let g:airline_section_z = '%l:%c %p%%'
 " enable bufferline in airline
 let g:airline#extensions#bufferline#enabled = 1
 let g:bufferline_echo = 0
-
-" changes colour of matching brackets
-highlight MatchParen        cterm=bold ctermbg=white ctermfg=black
-
-" colours signcolumn for gitgutter & syntastic
-highlight SignColumn        ctermbg=none
 
 <<<{git}
 " gitgutter options

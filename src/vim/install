@@ -9,6 +9,7 @@ build() {
     project_enabled "ctags"
     delete_chunk "ctags" "${BUILD_PATH}/${v}" $?
     build_submodule ftplugin
+    build_submodule colors
 }
 
 $@
