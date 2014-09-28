@@ -14,6 +14,7 @@ alias bk='cd ..'
 alias ls='ls --color=auto'
 alias la='ls -AlhG --color=auto'
 alias pacman='pacman --color=auto'
+<<<{git}
 alias gs='git status -s'
 alias gd='git diff'
 alias gdc='git diff --cached'
@@ -23,6 +24,7 @@ alias gap='git add -p'
 alias gc='git commit -e'
 alias gp='git push'
 alias ddg='sr -browser=lynx duckduckgo'
+>>>{git}
 # loads inputrc for readline - TODO this line SHOULD be omitted but is required
 bind -f ~/.inputrc
 
