@@ -163,9 +163,6 @@ map 0 ^
 " Interpret as Ruby
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru} set ft=ruby
 
-" wrap markdown and latex
-au BufRead,BufNewFile {*.md,*.tex,*.txt} setlocal textwidth=80
-
 " Global ignore
 set wildignore+=*.o,*.obj,.git,*.rbc,*/doc/*,*/node_modules/*,*/tmp/*,*.*~,*.class
 
