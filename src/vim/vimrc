@@ -131,6 +131,9 @@ nmap <cr> i<cr><esc>
 " Go to last buffer
 nnoremap å :b#<cr>
 
+" Adds less-esque functionallity to <space>
+map <space> <c-f>
+
 " Move between splits with ^ + standard vim bindings
 nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
