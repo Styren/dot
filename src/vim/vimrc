@@ -101,6 +101,7 @@ let mapleader=","
 
 " ctrlp
 nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>t :CtrlPTag<cr>
 
 " map <leader>c to tcomment
 map <leader>c :TComment<cr>
