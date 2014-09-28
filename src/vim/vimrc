@@ -53,6 +53,9 @@ set ruler
 set laststatus=2
 set scrolloff=2
 
+" prettier completion in cmdline
+set wildmenu
+
 " Whitespace stuff
 set nowrap
 set tabstop=4
