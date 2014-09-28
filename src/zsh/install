@@ -1,7 +1,10 @@
 #!/bin/sh
 
 build() {
-    build_file zshrc
+    local v="zshrc"
+    build_file $v
+    project_enabled "git"
+    delete_chunk "git" "${BUILD_PATH}/${v}" $?
     build_file zshenv
 }
 

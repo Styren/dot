@@ -46,6 +46,7 @@ zle -N zle-line-finish
 
 export PROMPT=$vi_ins_mode
 
+<<<{git}
 # Git aliases
 alias gs='git status -s'
 alias gd='git diff'
@@ -62,6 +63,7 @@ alias ls='ls --color=always'
 alias la='ls -AlhG --color=always'
 alias pacman='pacman --color=always'
 alias some='less -R'
+>>>{git}
 
 # reverse search in vi-mode
 bindkey '^R' history-incremental-search-backward
