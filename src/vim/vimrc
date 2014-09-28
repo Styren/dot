@@ -192,7 +192,7 @@ set backupdir=/tmp
 set colorcolumn=80
 
 " color scheme
-colorscheme desert
+colorscheme byland
 
 " Enable spell checking and column wrapping for documents
 autocmd BufRead,BufNewFile *.{md,tex,txt,info},COMMIT_EDITMSG call Spell() | setlocal textwidth=80
