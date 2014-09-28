@@ -103,6 +103,11 @@ let mapleader=","
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>t :CtrlPTag<cr>
 
+<<<{ctags}
+" jump to definition
+map <leader>g <C-]>
+>>>{ctags}
+
 " map <leader>c to tcomment
 map <leader>c :TComment<cr>
 
