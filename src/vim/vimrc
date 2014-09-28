@@ -125,6 +125,9 @@ nmap <leader>D :NERDTreeFind<cr>
 " Show buffers
 nmap Å :buffers<cr>:buffer<Space>
 
+" Split line with enter
+nmap <cr> i<cr><esc>
+
 " Go to last buffer
 nnoremap å :b#<cr>
 
