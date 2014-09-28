@@ -243,3 +243,10 @@ endfunction
 
 nmap gc :call GitCommit()<cr>
 >>>{git}
+
+" Enable spell checking in the current buffer
+function Spell(...)
+  let l:language = a:0 > 0 ? a:1 : "en"
+  execute "setlocal spell! spelllang=" . l:language
+  setlocal complete+=kspell
+endfunction
