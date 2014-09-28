@@ -103,7 +103,7 @@ cabbrev tnew tabedit
 let mapleader=","
 
 " ctrlp
-nnoremap <leader>f :CtrlP<cr>
+let g:ctrlp_map = '<leader>f'
 nnoremap <leader>t :CtrlPTag<cr>
 
 <<<{ctags}
