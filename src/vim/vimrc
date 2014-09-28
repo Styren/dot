@@ -106,6 +106,8 @@ nnoremap <leader>t :CtrlPTag<cr>
 <<<{ctags}
 " jump to definition
 map <leader>g <C-]>
+" go back to where you started 
+map <leader>b <C-T>
 >>>{ctags}
 
 " map <leader>c to tcomment
