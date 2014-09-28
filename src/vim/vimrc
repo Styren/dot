@@ -195,8 +195,8 @@ colorscheme desert
 autocmd BufRead,BufNewFile *.{md,tex,txt,info},COMMIT_EDITMSG call Spell() | setlocal textwidth=80
 
 " airline settings
-let g:airline_left_sep=" "
-let g:airline_right_sep=" "
+let g:airline_left_sep=""
+let g:airline_right_sep=""
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
