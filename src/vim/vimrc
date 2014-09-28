@@ -42,8 +42,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set encoding=utf-8
 set fileencoding=utf-8
 
+<<<{ctags}
 " recursivelly backscan ctags
 set tags=./tags;
+>>>{ctags}
 
 syntax on
 set number
