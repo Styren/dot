@@ -1,7 +1,6 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTFILE="$HOME/.cache/zsh/histfile"
+HISTSIZE=1024
+SAVEHIST=1024
 
 # default to vi-mode
 bindkey -v
