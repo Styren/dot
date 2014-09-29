@@ -2,6 +2,8 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+
+# default to vi-mode
 bindkey -v
 
 autoload -U colors && colors;
