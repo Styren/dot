@@ -243,7 +243,7 @@ nmap gc :call GitCommit()<cr>
 
 " Enable spell checking in the current buffer
 function Spell(...)
-    if getfperm(expand("%:p"))=~"-[x-]$"
+    if &readonly
         return
     endif
     let l:language = a:0 > 0 ? a:1 : "en"
