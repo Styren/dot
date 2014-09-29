@@ -63,6 +63,7 @@ make_config() {
     set_bool_flag "Configure for ctags?" "ctags" projects
     set_bool_flag "Configure for mail?" "mail" projects
     if set_bool_flag "Configure for X?" "X" projects; then
+        set_bool_flag "Configure for zathura?" "zathura" projects
         set_bool_flag "Configure for dwb?" "dwb" projects
         set_bool_flag "Configure for vlc?" "vlc" projects
         local wm=''

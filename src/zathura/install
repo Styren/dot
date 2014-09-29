@@ -1,0 +1,7 @@
+#!/bin/sh
+
+build() {
+    build_file zathurarc ${HOME}/.config/zathura zathurarc
+}
+
+$@
