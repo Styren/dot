@@ -80,6 +80,9 @@ set cursorline
 " Tab completion
 set wildmode=list:longest,list:full
 
+" Leave modes instantly but give other commands that rely on timeoutlen time
+set timeout timeoutlen=3000 ttimeoutlen=0
+
 " Run default test constant.
 let g:RUN_DEFAULT_TEST = 0
 " Run current test in focus constant.
