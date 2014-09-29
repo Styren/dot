@@ -2,6 +2,21 @@ HISTFILE="$HOME/.cache/zsh/histfile"
 HISTSIZE=1024
 SAVEHIST=1024
 
+# write - don't overwride so multiple sessions can share history
+setopt APPEND_HISTORY
+
+# share history between sessions
+setopt SHARE_HISTORY
+
+# ignore duplicates
+setopt HIST_IGNORE_DUPS
+
+# remove superflous blanks
+setopt HIST_REDUCE_BLANKS
+
+# don't add commands with leading whitespace to history - like in bash
+setopt HIST_IGNORE_SPACE
+
 # default to vi-mode
 bindkey -v
 
