@@ -1,8 +1,0 @@
-#!/usr/sh
-
-# Calls colorgcc if it exists
-if which colorgcc &>/dev/null; then
-    colorgcc "$@"
-else
-    gcc "$@"
-fi
