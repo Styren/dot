@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 build() {
     build_file css.vim $HOME/.vim/after/ftplugin css.vim
