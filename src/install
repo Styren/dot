@@ -231,7 +231,7 @@ main() {
     
     case $cmd in
         clean)
-            rm $build_path
+            rm -r $build_path
             ;;
         config)
             make_config $args "$config_file"
