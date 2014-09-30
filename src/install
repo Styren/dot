@@ -59,14 +59,20 @@ export -f get_depth
 build_module() {
     let DEPTH+=1
     echo -e $(get_depth)"Building module: \e[0;31m$1\e[0m"
-    ( cd $1 && ./install build )
+    pushd $1 >/dev/null
+    source ./install
+    build
+    popd >/dev/null
     let DEPTH+=-1
 }
 
 build_submodule() {
     let DEPTH+=1
     echo -e "$(get_depth)Building submodule: \e[0;31m$1\e[0m"
-    ( cd $1 && ./install build )
+    pushd $1 >/dev/null
+    source ./install
+    build
+    popd >/dev/null
     let DEPTH+=-1
 }
 
