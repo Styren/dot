@@ -76,7 +76,7 @@ alias gp='git push'
 # Misc aliases
 alias p='popd'
 alias ls='ls --color=always'
-alias la='ls -AlhG --color=always'
+alias la='ls -AlhG --color=always --human-readable'
 alias pacman='pacman --color=always'
 alias some='less -R'
 >>>{git}
