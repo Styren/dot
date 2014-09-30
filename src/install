@@ -48,8 +48,12 @@ set_multi_flag() {
 make_config() {
     local projects_out=()
     local tags_out=()
+    # TODO check which packages depend on eachother
+    for i in ${projects[@]}; do
+        set_bool_flag "Configure $i?" $i projects_out
+    done
     for i in ${tags[@]}; do
-        echo $i
+        set_bool_flag "Configure $i?" $i tags_out
     done
     echo "PROJECTS=(${projects_out[@]})" >> $2
     echo "TAGS=(${tags_out[@]})" >> $2
