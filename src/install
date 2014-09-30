@@ -1,9 +1,11 @@
 #!/bin/bash
 
-dotfiles_dir="$HOME/dotfiles"
-build_path="build"
-source_path="src"
-config_file="config.mk"
+export dotfiles_dir="$HOME/dotfiles"
+export build_path="build"
+export source_path="src"
+export config_file="config.mk"
+projects=()
+tags=()
 
 export DEPTH=0
 
