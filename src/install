@@ -1,5 +1,10 @@
 #!/bin/bash
 
+dotfiles_dir="$HOME/dotfiles"
+build_path="build"
+source_path="src"
+config_file="config.mk"
+
 export DEPTH=0
 
 # Opts
@@ -204,15 +209,15 @@ main() {
     get_dotrc
     dotfiles_dir=""
     source $DOTRC
-
+    
     if [[ -z dotfiles_dir ]]; then
         dotfiles_dir="$HOME/dotfiles"
     fi
-
-    cd $dotfiles_dir
-
-    source ./install
     
+    cd $dotfiles_dir
+    
+    source ./install
+
     case $cmd in
         clean)
             rm -r $build_path
