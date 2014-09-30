@@ -88,18 +88,18 @@ delete_chunk() {
 export -f delete_chunk
 
 tag_enabled() {
-    source $CONFIG
+    source $dotfiles_dir/$config_file
     local i
-    for i in "${TAGS[@]}"; do [ "$i" == "$1" ] && return 0; done
+    for i in "${tags[@]}"; do [ "$i" == "$1" ] && return 0; done
     return 1
 }
 
 export -f tag_enabled
 
 project_enabled() {
-    source $CONFIG
+    source $dotfiles_dir/$config_file
     local i
-    for i in "${PROJECTS[@]}"; do [[ "$i" == "$1" ]] && return 0; done
+    for i in "${projects[@]}"; do [ "$i" == "$1" ] && return 0; done
     return 1
 }
 
