@@ -11,9 +11,8 @@ SRC_PATH="$(pwd)/"
 export DEPTH=0
 
 # Opts
-OPTS=("$@")
-export PARAM_SILENT=0
-export PARAM_BUILD_ALL=0
+export SILENT=0
+export BUILD_ALL=0
 
 error() {
     echo "Error:" $1 1>&2
