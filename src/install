@@ -31,8 +31,6 @@ set_bool_flag() {
 }
 
 # $1 = args
-# $2 = config file
-# $3 = source path
 make_config() {
     local projects_out=()
     local tags_out=()
@@ -43,8 +41,8 @@ make_config() {
     for i in ${tags[@]}; do
         set_bool_flag $i tags_out
     done
-    echo "PROJECTS=(${projects_out[@]})" >> $2
-    echo "TAGS=(${tags_out[@]})" >> $2
+    echo "PROJECTS=(${projects_out[@]})" >> $config_file
+    echo "TAGS=(${tags_out[@]})" >> $config_file
 }
 
 get_depth() {
@@ -135,24 +133,22 @@ build_file() {
 export -f build_file
 
 # $1 = arguments
-# $2 = build path
-# $3 = source path
-# $4 = config file
 build() {
-    mkdir $2
-    touch $2/recipe
-    if ! [[ -f $4 ]]; then
+    mkdir $build_path
+    touch $build_path/recipe
+    if ! [[ -f $config_file ]]; then
         error "Config file doesn't exist."
     fi
     source $4
     local elem
     for elem in "${PROJECTS[@]}"; do
-        build_module $3/$elem
+        (cd $source_path && build_module $elem)
     done
 }
 
+# $1 = arguments
 patch() {
-    cat $2/recipe | \
+    cat $build_path/recipe | \
     while read LINE; do
         local from=$(echo $LINE | awk '{print $1}')
         local to=$(echo $LINE | awk '{print $2}')
