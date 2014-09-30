@@ -231,7 +231,7 @@ main() {
             make_config $args "$dotfiles_dir/$config_file"
             ;;
         build)
-            build $args "$dotfiles_dir/$build_path" "$dotfiles_dir/$source_path"
+            build $args "$dotfiles_dir/$build_path" "$dotfiles_dir/$source_path" "$config_file"
             ;;
         patch)
             patch "$dotfiles_dir/$args" "$dotfiles_dir/$build_path"
@@ -240,3 +240,6 @@ main() {
             error "Invalid command" && exit 1
             ;;
     esac
+}
+
+main "$@"
