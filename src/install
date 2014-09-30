@@ -161,12 +161,12 @@ export -f build_file
 # $3 = source path
 # $4 = config file
 build() {
-    mkdir ${BUILD_PATH}
-    touch ${RECIPE}
-    if ! [[ -f $CONFIG ]]; then
+    mkdir $2
+    touch $2/recipe
+    if ! [[ -f $4 ]]; then
         error "Config file doesn't exist."
     fi
-    source $CONFIG
+    source $4
     local elem
     for elem in "${PROJECTS[@]}"; do
         build_module $elem
