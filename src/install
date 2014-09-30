@@ -44,6 +44,7 @@ set_multi_flag() {
 
 # $1 = args
 # $2 = config file
+# $3 = source path
 make_config() {
     # TODO indent in scope
     local projects=()
@@ -236,7 +237,7 @@ main() {
             rm -r $build_path
             ;;
         config)
-            make_config $args "$config_file"
+            make_config $args "$config_file" "$source_path"
             ;;
         build)
             build $args "$build_path" "$source_path" "$config_file"
