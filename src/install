@@ -42,6 +42,8 @@ set_multi_flag() {
     done
 }
 
+# $1 = args
+# $2 = config file
 make_config() {
     # TODO indent in scope
     local projects=()
