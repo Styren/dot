@@ -5,6 +5,7 @@ INSTALL_PATH="$(cd .. && pwd)/"
 export BUILD_PATH="${INSTALL_PATH}build/"
 export CONFIG="${INSTALL_PATH}config.mk"
 export RECIPE="${BUILD_PATH}recipe"
+DOTRC=""
 
 SRC_PATH="$(pwd)/"
 
