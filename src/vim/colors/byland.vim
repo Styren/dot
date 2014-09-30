@@ -53,6 +53,10 @@ hi Underlined       cterm=underline ctermfg=5
 hi Ignore           cterm=bold ctermfg=7 ctermfg=darkgrey
 hi Error            cterm=bold ctermfg=7 ctermbg=1
 
+hi TabLineFill      cterm=NONE ctermbg=0 ctermfg=0
+hi TabLine          cterm=NONE ctermbg=0 ctermfg=white
+hi TabLineSel       cterm=NONE ctermbg=white ctermfg=0
+
 hi MatchParen       cterm=bold ctermbg=0
 hi SignColumn       ctermbg=none
 hi CursorLine       cterm=NONE
