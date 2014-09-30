@@ -18,6 +18,19 @@ error() {
     exit 1
 }
 
+error_prompt_cont() {
+    while true; do
+        read -p "Building $1 failed, continue? (y/n) " yn
+        case $yn in
+            [Yy]* )
+                return ;;
+            [Nn]* )
+                exit 1 ;;
+            * ) ;;
+        esac
+    done
+}
+
 set_bool_flag() {
     while true; do
         read -p "Configure $1? (y/n) " yn
@@ -62,7 +75,9 @@ build_module() {
     pushd "$1" >/dev/null
     FILE_EXT=".$1"
     source ./install
-    build
+    if ! build; then
+        error_prompt_cont $1
+    fi
     popd >/dev/null
     let DEPTH+=-1
 }
@@ -73,7 +88,9 @@ build_submodule() {
     pushd $1 >/dev/null
     FILE_EXT+=".$1"
     source ./install
-    build
+    if ! build; then
+        error_prompt_cont $1
+    fi
     popd >/dev/null
     let DEPTH+=-1
 }
