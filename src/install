@@ -124,8 +124,7 @@ build_file() {
     local suffix=0
     while (cd $dotfiles_dir && [[ -f $build_path/$build_name ]]); do
         build_name=${1}.${suffix}
-        # might not work
-        eval "$1='${build_name}'"
+        set -- "${@:1:1}" "${build_name}" "${@:2}"
         let suffix+=1
     done
     local origin=$(realpath $1)
