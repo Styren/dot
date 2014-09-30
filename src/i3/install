@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 build() {
     build_file i3rc ${BUILD_PATH}config/i3/ config
