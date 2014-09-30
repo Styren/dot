@@ -226,18 +226,29 @@ main() {
 
     source ./install
 
+    # get absolute paths
+    if ! [[ "$build_path" = /* ]]; then
+        build_path=${dotfiles_dir}/${build_path}
+    fi
+    if ! [[ "$source_path" = /* ]]; then
+        source_path=${dotfiles_dir}/${source_path}
+    fi
+    if ! [[ "$config_file" = /* ]]; then
+        config_file=${dotfiles_dir}/${config_file}
+    fi
+
     case $cmd in
         clean)
             rm -r $build_path
             ;;
         config)
-            make_config $args "$config_file" "$source_path"
+            make_config $args
             ;;
         build)
-            build_all $args "$build_path" "$source_path" "$config_file"
+            build_all $args
             ;;
         patch)
-            patch "$args" "$build_path"
+            patch $args
             ;;
         *)
             error "Invalid command" && exit 1
