@@ -59,7 +59,7 @@ export -f get_depth
 build_module() {
     let DEPTH+=1
     echo -e $(get_depth)"Building module: \e[0;31m$1\e[0m"
-    pushd $1 >/dev/null
+    pushd "$1" >/dev/null
     FILE_EXT=".$1"
     source ./install
     build
@@ -83,7 +83,7 @@ export -f build_submodule
 # Deletes all lines between <<<{$1} and >>>{$1} including the tags in file $2
 # $3 determines wether to delete the chunk or only the tags
 delete_chunk() {
-    pushd $dotfiles_dir/$build_path >/dev/null
+    pushd $build_path >/dev/null
     local f=${2}${FILE_EXT}
     if ! [ ${3} -eq 0 ]; then
         sed -i "/<<<{${1}}/,/>>>{${1}}/d" "$f"
@@ -97,7 +97,7 @@ delete_chunk() {
 export -f delete_chunk
 
 tag_enabled() {
-    source $dotfiles_dir/$config_file
+    source $config_file
     local i
     for i in "${tags[@]}"; do [ "$i" == "$1" ] && return 0; done
     return 1
@@ -106,7 +106,7 @@ tag_enabled() {
 export -f tag_enabled
 
 project_enabled() {
-    source $dotfiles_dir/$config_file
+    source $config_file
     local i
     for i in "${projects[@]}"; do [ "$i" == "$1" ] && return 0; done
     return 1
@@ -130,10 +130,13 @@ build_file() {
     fi
     # if file with same name is present we handle the collision
     local build_name=${1}${FILE_EXT}
+    # torigin=$(stat -c%Y $1)
+    # tbuild=$(cd $dotfiles_dir && stat -c%Y $build_path/$1)
+    # echo $torigin $tbuild
     local origin=$(realpath $1)
-    (cd $dotfiles_dir && cp -i $origin $build_path/$build_name)
+    cp -i $origin $build_path/$build_name
     echo -e "$(get_depth)built $1"
-    (cd $dotfiles_dir && echo "$build_name $path $name" >> $build_path/recipe)
+    echo "$build_name $path $name" >> $build_path/recipe
     let DEPTH+=-1
 }
 
@@ -142,17 +145,18 @@ export -f build_file
 # $1 = arguments
 build_all() {
     # We don't check timestamps so lets just remove build dir
-    rm -r $build_path
     mkdir $build_path
     touch $build_path/recipe
     if ! [[ -f $config_file ]]; then
         error "Config file doesn't exist."
     fi
-    source $4
+    source $config_file
     local elem
+    pushd "$source_path" >/dev/null
     for elem in "${PROJECTS[@]}"; do
-        (cd $source_path && build_module $elem)
+        build_module $elem
     done
+    popd >/dev/null
 }
 
 # $1 = arguments
