@@ -67,8 +67,8 @@ make_config() {
     fi
     set_bool_flag "Configure for laptop?" "laptop" tags
     set_multi_flag "Configure for which shell?" "bash zsh none" projects
-    echo "PROJECTS=(${projects[@]})" >> $CONFIG
-    echo "TAGS=(${tags[@]})" >> $CONFIG
+    echo "PROJECTS=(${projects[@]})" >> $2
+    echo "TAGS=(${tags[@]})" >> $2
 }
 
 get_depth() {
