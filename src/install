@@ -49,7 +49,7 @@ make_config() {
 
 get_depth() {
     for ((i=0; i<$DEPTH; i++)) {
-        echo -ne " " 
+        echo -ne "    "
     }
     return
 }
@@ -143,7 +143,7 @@ build_file() {
 export -f build_file
 
 # $1 = arguments
-build() {
+build_all() {
     mkdir $build_path
     touch $build_path/recipe
     if ! [[ -f $config_file ]]; then
@@ -215,13 +215,13 @@ main() {
     get_dotrc
     dotfiles_dir=""
     source $DOTRC
-    
+
     if [[ -z dotfiles_dir ]]; then
         dotfiles_dir="$HOME/dotfiles"
     fi
-    
+
     cd $dotfiles_dir
-    
+
     source ./install
 
     case $cmd in
@@ -232,7 +232,7 @@ main() {
             make_config $args "$config_file" "$source_path"
             ;;
         build)
-            build $args "$build_path" "$source_path" "$config_file"
+            build_all $args "$build_path" "$source_path" "$config_file"
             ;;
         patch)
             patch "$args" "$build_path"
