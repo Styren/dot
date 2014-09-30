@@ -69,54 +69,6 @@ make_config() {
     echo "TAGS=(${tags[@]})" >> $CONFIG
 }
 
-run_command() {
-    local cmd=$1
-    local params=$(echo $2 | grep -o .)
-    case $cmd in
-        build) 
-            if [[ -d $BUILD_PATH ]]; then
-                error "Target already exists"
-            fi
-            for i in $params; do
-                case $i in
-                    s)
-                        PARAM_SILENT=1
-                        ;;
-                    a)
-                        PARAM_BUILD_ALL=1
-                        ;;
-                    *)
-                        error "Invalid parameter"
-                esac
-            done
-            build
-            ;;
-        patch)
-            if ! [[ -d $BUILD_PATH ]]; then
-                error "Build directory doesn't exist"
-            fi
-            if ! [[ -f $RECIPE ]]; then
-                error "No recipe file"
-            fi
-            patch
-            ;;
-        clean)
-            rm -r $BUILD_PATH
-            ;;
-        config)
-            if [[ -f $CONFIG ]]; then
-                rm $CONFIG
-            fi
-            touch "$CONFIG"
-            make_config
-            ;;
-        * )
-            error "Invalid command"
-            exit 1
-            ;;
-    esac
-}
-
 get_depth() {
     for ((i=0; i<$DEPTH; i++)) {
         echo -ne " " 
