@@ -170,7 +170,7 @@ build() {
 }
 
 patch() {
-    cat $RECIPE | \
+    cat $2/recipe | \
     while read LINE; do
         local from=$(echo $LINE | awk '{print $1}')
         local to=$(echo $LINE | awk '{print $2}')
@@ -179,16 +179,64 @@ patch() {
     done
 }
 
-main() {
-    if [[ -z ${OPTS[1]} ]]; then
-        if [[ -z ${OPTS[0]} ]]; then
-            echo No command specified
-            exit 1
+get_dotrc() {
+    if ! [[ -z $DOTRC ]]; then
+        return
+    fi
+    # TODO don't error if file doesn't exist
+    if [[ -z $XDG_CONFIG_HOME ]]; then
+        if [[ -z $HOME/.config/dot/dotrc ]]; then
+            DOTRC="/etc/dotrc"
+        else
+            DOTRC="$HOME/.config/dot/dotrc"
         fi
-        run_command ${OPTS[0]}
     else
-        run_command ${OPTS[1]} ${OPTS[0]}
+        DOTRC="$XDG_CONFIG_HOME/dot/dotrc"
     fi
 }
 
-main "$@"
+help() {
+    cat <<HELP
+usage: dot [options] command
+HELP
+}
+
+main() {
+    # get last argument, which should be the command
+    for cmd; do true; done
+
+    # get parameters, TODO remove last element
+    args="$@"
+
+    if [[ -z $cmd ]]; then
+        help && exit 1
+    fi
+
+    # Source the config file
+    get_dotrc
+    dotfiles_dir=""
+    source $DOTRC
+
+    if [[ -z dotfiles_dir ]]; then
+        dotfiles_dir="$HOME/dotfiles"
+    fi
+
+    source $dotfiles_dir/install
+    
+    case $cmd in
+        clean)
+            rm $BUILD_PATH
+            ;;
+        config)
+            make_config $args "$dotfiles_dir/$config_file"
+            ;;
+        build)
+            build $args "$dotfiles_dir/$build_path" "$dotfiles_dir/$source_path"
+            ;;
+        patch)
+            patch "$dotfiles_dir/$args" "$dotfiles_dir/$build_path"
+            ;;
+        *)
+            error "Invalid command" && exit 1
+            ;;
+    esac
