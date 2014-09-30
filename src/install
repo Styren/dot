@@ -225,20 +225,22 @@ main() {
         dotfiles_dir="$HOME/dotfiles"
     fi
 
-    source $dotfiles_dir/install
+    cd $dotfiles_dir
+
+    source install
     
     case $cmd in
         clean)
             rm $BUILD_PATH
             ;;
         config)
-            make_config $args "$dotfiles_dir/$config_file"
+            make_config $args "$config_file"
             ;;
         build)
-            build $args "$dotfiles_dir/$build_path" "$dotfiles_dir/$source_path" "$config_file"
+            build $args "$build_path" "$source_path" "$config_file"
             ;;
         patch)
-            patch "$dotfiles_dir/$args" "$dotfiles_dir/$build_path"
+            patch "$args" "$build_path"
             ;;
         *)
             error "Invalid command" && exit 1
