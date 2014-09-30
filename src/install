@@ -47,29 +47,13 @@ set_multi_flag() {
 # $3 = source path
 make_config() {
     # TODO indent in scope
-    local projects=()
-    local tags=()
-    set_bool_flag "Configure for vim?" "vim" projects
-    set_bool_flag "Configure for git?" "git" projects
-    set_bool_flag "Configure for tmux?" "tmux" projects
-    set_bool_flag "Configure for colorgcc?" "colorgcc" projects
-    set_bool_flag "Configure for lynx?" "lynx" projects
-    set_bool_flag "Configure for ctags?" "ctags" projects
-    set_bool_flag "Configure for mail?" "mail" projects
-    if set_bool_flag "Configure for X?" "X" projects; then
-        set_bool_flag "Configure for zathura?" "zathura" projects
-        set_bool_flag "Configure for dwb?" "dwb" projects
-        set_bool_flag "Configure for vlc?" "vlc" projects
-        local wm=''
-        set_multi_flag "Configure for which wm?" "bspwm i3 none" projects wm
-        if [ $wm == "bspwm" ]; then
-            set_bool_flag "Configure for sxhkd?" "sxhkd" projects
-        fi
-    fi
-    set_bool_flag "Configure for laptop?" "laptop" tags
-    set_multi_flag "Configure for which shell?" "bash zsh none" projects
-    echo "PROJECTS=(${projects[@]})" >> $2
-    echo "TAGS=(${tags[@]})" >> $2
+    local projects_out=()
+    local tags_out=()
+    for i in ${tags[@]}; do
+        echo $i
+    done
+    echo "PROJECTS=(${projects_out[@]})" >> $2
+    echo "TAGS=(${tags_out[@]})" >> $2
 }
 
 get_depth() {
@@ -172,7 +156,7 @@ build() {
     source $4
     local elem
     for elem in "${PROJECTS[@]}"; do
-        build_module $elem
+        build_module $3/$elem
     done
 }
 
@@ -209,11 +193,22 @@ HELP
 }
 
 main() {
-    # get last argument, which should be the command
-    for cmd; do true; done
-
     # get parameters, TODO remove last element
     args="$@"
+
+    while getopts ":h" opt; do
+        case $opt in
+            h)
+                help && exit 0
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+    # get last argument, which should be the command
+    shift $((OPTIND-1))
+    cmd=$1
 
     if [[ -z $cmd ]]; then
         help && exit 1
