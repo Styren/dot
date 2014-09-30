@@ -46,7 +46,6 @@ set_multi_flag() {
 # $2 = config file
 # $3 = source path
 make_config() {
-    # TODO indent in scope
     local projects_out=()
     local tags_out=()
     for i in ${tags[@]}; do
