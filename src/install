@@ -75,12 +75,14 @@ export -f build_submodule
 # Deletes all lines between <<<{$1} and >>>{$1} including the tags in file $2
 # $3 determines wether to delete the chunk or only the tags
 delete_chunk() {
+    pushd $dotfiles_dir/$build_path >/dev/null
     if ! [ ${3} -eq 0 ]; then
         sed -i "/<<<{${1}}/,/>>>{${1}}/d" "$2"
     else
         sed -i "/<<<{${1}}/d" "$2"
         sed -i "/>>>{${1}}/d" "$2"
     fi
+    popd >/dev/null
 }
 
 export -f delete_chunk
