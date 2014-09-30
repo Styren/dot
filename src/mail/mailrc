@@ -1,7 +1,0 @@
-account buster {
-  set folder=imaps://styren@webmail.kth.se
-  set record=+Sent MBOX=+mbox mail/outbox
-}
-set imap-cache=~/mail/.cache
-# pipe HTML mail to lynx
-set pipe-text/html="lynx -stdin -dump -force_html"

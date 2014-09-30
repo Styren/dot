@@ -1,8 +1,0 @@
-#!/bin/bash
-
-build() {
-    build_file vlcrc ${HOME}/.config/vlc vlcrc
-    build_file vlc-qt-interface.conf ${HOME}/.config/vlc vlc-qt-interface.conf
-}
-
-$@
