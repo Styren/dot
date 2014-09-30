@@ -160,13 +160,16 @@ build_all() {
 
 # $1 = arguments
 patch() {
-    cat $build_path/recipe | \
+    pushd $dotfiles_dir/$build_path >/dev/null
+    echo $(pwd)
+    cat recipe | \
     while read LINE; do
         local from=$(echo $LINE | awk '{print $1}')
         local to=$(echo $LINE | awk '{print $2}')
         local name=$(echo $LINE | awk '{print $3}')
-        ( cd $BUILD_PATH && mkdir -p $to && cp $from "${to}/${name}" )
+        mkdir -p $to && cp $from "${to}/${name}"
     done
+    popd
 }
 
 get_dotrc() {
