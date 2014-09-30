@@ -130,9 +130,15 @@ build_file() {
     fi
     # if file with same name is present we handle the collision
     local build_name=${1}${FILE_EXT}
-    # torigin=$(stat -c%Y $1)
-    # tbuild=$(cd $dotfiles_dir && stat -c%Y $build_path/$1)
-    # echo $torigin $tbuild
+    if [[ -f $build_path/$build_name ]]; then
+        torigin=$(stat -c%Y $1)
+        tbuild=$(stat -c%Y $build_path/$build_name)
+        if [[ $torigin -lt $tbuild ]]; then
+            DEPTH+=-1
+            echo "$(get_depth)$1 up to date"
+            return
+        fi
+    fi
     local origin=$(realpath $1)
     cp -i $origin $build_path/$build_name
     echo -e "$(get_depth)built $1"
