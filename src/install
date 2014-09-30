@@ -227,7 +227,7 @@ main() {
 
     cd $dotfiles_dir
 
-    source install
+    source ./install
     
     case $cmd in
         clean)
