@@ -60,6 +60,7 @@ build_module() {
     let DEPTH+=1
     echo -e $(get_depth)"Building module: \e[0;31m$1\e[0m"
     pushd $1 >/dev/null
+    FILE_EXT=".$1"
     source ./install
     build
     popd >/dev/null
@@ -70,6 +71,7 @@ build_submodule() {
     let DEPTH+=1
     echo -e "$(get_depth)Building submodule: \e[0;31m$1\e[0m"
     pushd $1 >/dev/null
+    FILE_EXT+=".$1"
     source ./install
     build
     popd >/dev/null
@@ -82,11 +84,12 @@ export -f build_submodule
 # $3 determines wether to delete the chunk or only the tags
 delete_chunk() {
     pushd $dotfiles_dir/$build_path >/dev/null
+    local f=${2}${FILE_EXT}
     if ! [ ${3} -eq 0 ]; then
-        sed -i "/<<<{${1}}/,/>>>{${1}}/d" "$2"
+        sed -i "/<<<{${1}}/,/>>>{${1}}/d" "$f"
     else
-        sed -i "/<<<{${1}}/d" "$2"
-        sed -i "/>>>{${1}}/d" "$2"
+        sed -i "/<<<{${1}}/d" "$f"
+        sed -i "/>>>{${1}}/d" "$f"
     fi
     popd >/dev/null
 }
@@ -126,13 +129,7 @@ build_file() {
         name=".$1"
     fi
     # if file with same name is present we handle the collision
-    local build_name=$1
-    local suffix=0
-    while (cd $dotfiles_dir && [[ -f $build_path/$build_name ]]); do
-        build_name=${1}.${suffix}
-        set -- "${@:1:1}" "${build_name}" "${@:2}"
-        let suffix+=1
-    done
+    local build_name=${1}${FILE_EXT}
     local origin=$(realpath $1)
     (cd $dotfiles_dir && cp -i $origin $build_path/$build_name)
     echo -e "$(get_depth)built $1"
