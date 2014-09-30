@@ -157,8 +157,7 @@ build_all() {
 
 # $1 = arguments
 patch() {
-    pushd $dotfiles_dir/$build_path >/dev/null
-    echo $(pwd)
+    pushd $build_path >/dev/null
     cat recipe | \
     while read LINE; do
         local from=$(echo $LINE | awk '{print $1}')
@@ -166,7 +165,7 @@ patch() {
         local name=$(echo $LINE | awk '{print $3}')
         mkdir -p $to && cp $from "${to}/${name}"
     done
-    popd
+    popd >/dev/null
 }
 
 get_dotrc() {
