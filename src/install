@@ -156,6 +156,10 @@ build_file() {
 
 export -f build_file
 
+# $1 = arguments
+# $2 = build path
+# $3 = source path
+# $4 = config file
 build() {
     mkdir ${BUILD_PATH}
     touch ${RECIPE}
