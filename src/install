@@ -209,7 +209,7 @@ main() {
     shift $((OPTIND-1))
     cmd=$1
 
-    if [[ -z $cmd ]]; then
+    if [[ -z "$cmd" ]]; then
         help && exit 1
     fi
 
@@ -237,7 +237,7 @@ main() {
         config_file=${dotfiles_dir}/${config_file}
     fi
 
-    case $cmd in
+    case "$cmd" in
         clean)
             rm -r $build_path
             ;;
