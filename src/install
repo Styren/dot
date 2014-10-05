@@ -102,7 +102,7 @@ export -f build_submodule
 delete_chunk() {
     pushd $build_path >/dev/null
     local f=${2}${FILE_EXT}
-    if ! [ ${3} -eq 0 ]; then
+    if [ ${3} -eq 0 ]; then
         sed -i "/<<<{${1}}/,/>>>{${1}}/d" "$f"
     else
         sed -i "/<<<{${1}}/d" "$f"
@@ -116,8 +116,8 @@ export -f delete_chunk
 tag_enabled() {
     source $config_file
     local i
-    for i in "${tags[@]}"; do [ "$i" == "$1" ] && return 0; done
-    return 1
+    for i in "${TAGS[@]}"; do [ "$i" == "$1" ] && return 1; done
+    return 0
 }
 
 export -f tag_enabled
@@ -125,8 +125,8 @@ export -f tag_enabled
 project_enabled() {
     source $config_file
     local i
-    for i in "${projects[@]}"; do [ "$i" == "$1" ] && return 0; done
-    return 1
+    for i in "${PROJECTS[@]}"; do [ "$i" == "$1" ] && return 1; done
+    return 0
 }
 
 export -f project_enabled
