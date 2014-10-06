@@ -97,6 +97,13 @@ build_submodule() {
 
 export -f build_submodule
 
+dot_echo() {
+    local args="$1"
+    shift
+    local out="$@"
+    echo -e "$args" "$(get_depth)${out}"
+}
+
 # Deletes all lines between <<<{$1} and >>>{$1} including the tags in file $2
 # $3 determines wether to delete the chunk or only the tags
 delete_chunk() {
