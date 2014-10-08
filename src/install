@@ -47,6 +47,7 @@ set_bool_flag() {
 
 # $1 = args
 make_config() {
+    rm $config_file
     local projects_out=()
     local tags_out=()
     # TODO check which packages depend on eachother
