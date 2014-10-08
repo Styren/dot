@@ -99,10 +99,7 @@ build_submodule() {
 export -f build_submodule
 
 dot_echo() {
-    local args="$1"
-    shift
-    local out="$@"
-    echo -e "$args" "$(get_depth)${out}"
+    echo "-en" "$(get_depth)$@"
 }
 
 # Deletes all lines between <<<{$1} and >>>{$1} including the tags in file $2
