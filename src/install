@@ -246,8 +246,6 @@ main() {
 
     # Source the config file
     get_dotrc
-    dotfiles_dir=""
-    source $DOTRC
 
     if [[ -z dotfiles_dir ]]; then
         dotfiles_dir="$HOME/dotfiles"
