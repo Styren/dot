@@ -161,7 +161,7 @@ build_file() {
             return
         fi
     fi
-    local origin=$(realpath $1)
+    local origin=$(readlink -f $1)
     cp -i $origin $build_path/$build_name
     echo -e "$(get_depth)built $1"
     echo "$build_name $path $name" >> $build_path/recipe
